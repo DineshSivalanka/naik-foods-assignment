@@ -42,7 +42,7 @@ const ProductDetails = () => {
   if (loading) {
     return (
       <h2 className="status">
-        Loading product...
+        Loading delicious products...
       </h2>
     );
   }

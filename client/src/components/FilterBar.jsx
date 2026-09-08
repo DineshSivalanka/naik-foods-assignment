@@ -1,3 +1,5 @@
+import AutocompleteSearch from "./AutocompleteSearch";
+
 const FilterBar = ({ filters, setFilters, onSearch }) => {
   const categories = [
     "Snacks",
@@ -25,19 +27,19 @@ const FilterBar = ({ filters, setFilters, onSearch }) => {
       minPrice: "",
       maxPrice: "",
       minRating: "",
+      minRating: "",
       sort: "",
+      availability: "",
     });
   };
 
   return (
     <div className="filter-bar">
 
-      <input
-        type="text"
-        name="search"
-        placeholder="Search products..."
-        value={filters.search}
-        onChange={handleChange}
+      <AutocompleteSearch 
+        value={filters.search} 
+        onChange={handleChange} 
+        onSelect={onSearch}
       />
 
       <select
@@ -90,6 +92,16 @@ const FilterBar = ({ filters, setFilters, onSearch }) => {
         <option value="price-low">Price: Low to High</option>
         <option value="price-high">Price: High to Low</option>
         <option value="rating">Highest Rated</option>
+      </select>
+
+      <select
+        name="availability"
+        value={filters.availability || ""}
+        onChange={handleChange}
+      >
+        <option value="">Availability (All)</option>
+        <option value="in-stock">In Stock</option>
+        <option value="out-of-stock">Out of Stock</option>
       </select>
 
       <button onClick={onSearch}>

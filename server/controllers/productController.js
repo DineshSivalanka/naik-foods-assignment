@@ -9,6 +9,7 @@ const getProducts = async (req, res) => {
       maxPrice,
       minRating,
       sort,
+      availability,
     } = req.query;
 
     const filter = {};
@@ -44,6 +45,13 @@ const getProducts = async (req, res) => {
       filter.rating = {
         $gte: Number(minRating),
       };
+    }
+
+    // Availability
+    if (availability === "in-stock") {
+      filter.stock = { $gt: 0 };
+    } else if (availability === "out-of-stock") {
+      filter.stock = 0;
     }
 
     // Sorting

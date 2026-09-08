@@ -16,6 +16,7 @@ const Store = () => {
     maxPrice: "",
     minRating: "",
     sort: "",
+    availability: "",
   });
 
   const fetchProducts = async (currentFilters = filters) => {
