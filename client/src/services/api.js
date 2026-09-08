@@ -41,4 +41,9 @@ export const removeFromWishlist = async (clientId, productId) => {
   return response.data;
 };
 
+export const createOrder = async (orderData) => {
+  const response = await API.post("/orders", orderData);
+  return response.data;
+};
+
 export default API;

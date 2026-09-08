@@ -4,6 +4,8 @@ import { getProductById } from "../services/api";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import Recommendations from "../components/Recommendations";
+import ProductReviews from "../components/ProductReviews";
+import DeliveryCheck from "../components/DeliveryCheck";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -130,7 +132,9 @@ const ProductDetails = () => {
               : "✕ Out of Stock"}
           </p>
 
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <DeliveryCheck />
+
+          <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
             <button
               className="add-cart-button"
               disabled={product.stock === 0}
@@ -159,6 +163,7 @@ const ProductDetails = () => {
 
       </div>
       
+      <ProductReviews product={product} />
       <Recommendations productId={product._id} />
 
     </div>

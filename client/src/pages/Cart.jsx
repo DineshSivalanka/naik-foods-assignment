@@ -10,10 +10,23 @@ const Cart = () => {
     decreaseQuantity,
     removeFromCart,
     cartTotal,
+    clearCart,
   } = useCart();
+
+  const handleCheckout = () => {
+    const purchased = JSON.parse(localStorage.getItem("purchasedItems") || "[]");
+    const newPurchased = [...new Set([...purchased, ...cart.map(item => item._id)])];
+    localStorage.setItem("purchasedItems", JSON.stringify(newPurchased));
+    
+    alert("Thank you for your purchase! You can now review these items.");
+    if (clearCart) clearCart();
+  };
 
   const remaining =
     FREE_DELIVERY_LIMIT - cartTotal;
+
+  const deliveryFee = cartTotal >= FREE_DELIVERY_LIMIT ? 0 : 40;
+  const finalTotal = cartTotal + deliveryFee;
 
   const progress = Math.min(
     (cartTotal / FREE_DELIVERY_LIMIT) * 100,
@@ -150,9 +163,9 @@ const Cart = () => {
             <span>Delivery</span>
 
             <strong>
-              {cartTotal >= FREE_DELIVERY_LIMIT
+              {deliveryFee === 0
                 ? "FREE"
-                : "Calculated at checkout"}
+                : `₹${deliveryFee}`}
             </strong>
           </div>
 
@@ -160,12 +173,27 @@ const Cart = () => {
 
           <div className="summary-total">
             <span>Total</span>
-            <strong>₹{cartTotal}</strong>
+            <strong>₹{finalTotal}</strong>
           </div>
 
-          <button className="checkout-button">
+          <button className="checkout-button" onClick={() => window.location.href = '/checkout'}>
             Proceed to Checkout
           </button>
+          
+          <Link to="/store" className="secondary-button" style={{ 
+            display: 'block', 
+            textAlign: 'center', 
+            marginTop: '10px', 
+            padding: '12px', 
+            background: 'white', 
+            border: '1px solid var(--primary-color)', 
+            color: 'var(--primary-color)', 
+            borderRadius: '8px', 
+            fontWeight: '600', 
+            textDecoration: 'none'
+          }}>
+            Continue Shopping
+          </Link>
 
         </div>
 
