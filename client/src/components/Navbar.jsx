@@ -19,6 +19,8 @@ const Navbar = () => {
         <Link to="/">Home</Link>
         <Link to="/store">Store</Link>
         <Link to="/about">About</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/contact">Contact</Link>
       </div>
 
       <div className="nav-actions" style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
