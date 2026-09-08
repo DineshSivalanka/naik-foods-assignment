@@ -38,8 +38,10 @@ const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
     }
   };
 
+  const inputClasses = "w-full sm:w-auto flex-1 p-3.5 border border-gray-200 rounded-lg bg-gray-50 text-sm text-gray-800 transition-colors focus:outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15";
+
   return (
-    <div className="filter-bar">
+    <div className="flex flex-wrap gap-4 mb-8 p-6 bg-white border border-gray-200 rounded-xl shadow-sm">
 
       <AutocompleteSearch
         value={filters.search}
@@ -51,6 +53,7 @@ const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
         name="category"
         value={filters.category}
         onChange={handleChange}
+        className={inputClasses}
       >
         <option value="">All Categories</option>
 
@@ -67,6 +70,7 @@ const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
         placeholder="Min ₹"
         value={filters.minPrice}
         onChange={handleChange}
+        className={inputClasses}
       />
 
       <input
@@ -75,12 +79,14 @@ const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
         placeholder="Max ₹"
         value={filters.maxPrice}
         onChange={handleChange}
+        className={inputClasses}
       />
 
       <select
         name="minRating"
         value={filters.minRating}
         onChange={handleChange}
+        className={inputClasses}
       >
         <option value="">Any Rating</option>
         <option value="4">4★ & above</option>
@@ -92,6 +98,7 @@ const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
         name="sort"
         value={filters.sort}
         onChange={handleChange}
+        className={inputClasses}
       >
         <option value="">Newest</option>
         <option value="price-low">Price: Low to High</option>
@@ -103,19 +110,20 @@ const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
         name="availability"
         value={filters.availability || ""}
         onChange={handleChange}
+        className={inputClasses}
       >
         <option value="">Availability (All)</option>
         <option value="in-stock">In Stock</option>
         <option value="out-of-stock">Out of Stock</option>
       </select>
 
-      <button onClick={onSearch}>
+      <button onClick={onSearch} className="px-6 py-3.5 rounded-lg bg-primary text-white font-medium hover:bg-[#c2410c] hover:-translate-y-px transition-all">
         Search
       </button>
 
       <button
         type="button"
-        className="reset-button"
+        className="px-6 py-3.5 rounded-lg bg-gray-100 text-gray-800 font-medium hover:bg-gray-300 hover:-translate-y-px transition-all"
         onClick={handleReset}
       >
         Reset

@@ -36,16 +36,16 @@ const ProductReviews = ({ product }) => {
   ];
 
   return (
-    <div className="product-reviews" style={{ marginTop: '40px', paddingTop: '40px', borderTop: '1px solid var(--border-color)' }}>
-      <h2>Customer Reviews</h2>
+    <div className="mt-10 pt-10 border-t border-gray-200">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Customer Reviews</h2>
       
-      <div className="reviews-summary" style={{ display: 'flex', gap: '40px', margin: '20px 0', alignItems: 'center' }}>
-        <div className="rating-overall" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '32px', fontWeight: 'bold', color: 'var(--text-dark)' }}>⭐ {product.rating} / 5</div>
-          <div style={{ color: 'var(--text-light)', marginTop: '5px' }}>{product.reviews} Reviews</div>
+      <div className="flex flex-col md:flex-row gap-10 my-5 md:items-center">
+        <div className="text-center md:text-left">
+          <div className="text-3xl font-bold text-gray-900">⭐ {product.rating} / 5</div>
+          <div className="text-gray-500 mt-1 font-medium">{product.reviews} Reviews</div>
         </div>
 
-        <div className="rating-bars" style={{ flex: 1, maxWidth: '300px' }}>
+        <div className="flex-1 max-w-[300px] w-full mx-auto md:mx-0">
           {[
             { stars: 5, pct: 82 },
             { stars: 4, pct: 12 },
@@ -53,39 +53,38 @@ const ProductReviews = ({ product }) => {
             { stars: 2, pct: 1 },
             { stars: 1, pct: 1 }
           ].map((bar) => (
-            <div key={bar.stars} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '5px' }}>
-              <span style={{ width: '45px', color: 'var(--secondary-color)' }}>
+            <div key={bar.stars} className="flex items-center gap-2.5 mb-1.5">
+              <span className="w-[50px] text-yellow-400 tracking-widest text-sm">
                 {"★".repeat(bar.stars)}{"☆".repeat(5 - bar.stars)}
               </span>
-              <div style={{ flex: 1, height: '8px', background: 'var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
-                <div style={{ 
-                  width: `${bar.pct}%`, 
-                  height: '100%', 
-                  background: 'var(--secondary-color)' 
-                }}></div>
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-yellow-400"
+                  style={{ width: `${bar.pct}%` }}
+                ></div>
               </div>
-              <span style={{ width: '40px', textAlign: 'right', fontSize: '14px', color: 'var(--text-light)' }}>{bar.pct}%</span>
+              <span className="w-10 text-right text-sm text-gray-500 font-medium">{bar.pct}%</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="reviews-list" style={{ marginTop: '30px' }}>
+      <div className="mt-8 space-y-4">
         {mockReviews.map(review => (
-          <div key={review.id} className="review-card" style={{ padding: '20px', border: '1px solid var(--border-color)', borderRadius: '8px', marginBottom: '15px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+          <div key={review.id} className="p-5 border border-gray-200 rounded-lg bg-white shadow-sm">
+            <div className="flex justify-between mb-2.5">
               <div>
                 {/* Author moved to bottom for Verified Customer style */}
               </div>
-              <div style={{ color: 'var(--text-light)', fontSize: '14px' }}>{review.date}</div>
+              <div className="text-gray-500 text-sm font-medium">{review.date}</div>
             </div>
-            <div style={{ color: 'var(--secondary-color)', marginBottom: '10px' }}>
+            <div className="text-yellow-400 mb-2.5 text-sm">
               {"⭐".repeat(review.rating)}
             </div>
-            <p style={{ margin: 0, color: 'var(--text-dark)', lineHeight: '1.5', fontStyle: 'italic' }}>"{review.text}"</p>
+            <p className="m-0 text-gray-900 leading-relaxed italic text-lg">"{review.text}"</p>
             {review.verified && (
-              <div style={{ marginTop: '10px', color: 'var(--text-light)', fontSize: '13px' }}>
-                — {review.author} <span style={{ color: '#16a34a', marginLeft: '4px' }}>✓</span>
+              <div className="mt-2.5 text-gray-500 text-sm font-medium">
+                — {review.author} <span className="text-green-600 ml-1 font-bold">✓</span>
               </div>
             )}
           </div>
@@ -93,21 +92,11 @@ const ProductReviews = ({ product }) => {
       </div>
       
       {hasPurchased ? (
-        <button className="secondary-button" style={{ 
-          width: '100%', 
-          padding: '12px', 
-          background: 'white', 
-          border: '1px solid var(--primary-color)', 
-          color: 'var(--primary-color)', 
-          borderRadius: '8px', 
-          fontWeight: '600', 
-          cursor: 'pointer',
-          marginTop: '10px'
-        }}>
+        <button className="w-full py-3 mt-5 bg-white border border-primary text-primary hover:bg-primary/5 rounded-lg font-bold cursor-pointer transition-colors">
           Write a Review
         </button>
       ) : (
-        <div style={{ marginTop: '20px', padding: '15px', background: '#f8fafc', borderRadius: '8px', textAlign: 'center', color: 'var(--text-light)', border: '1px solid var(--border-color)' }}>
+        <div className="mt-5 p-4 bg-gray-50 rounded-lg text-center text-gray-500 border border-gray-200 font-medium">
           Only verified purchasers should be allowed to leave a Verified Purchase review.
         </div>
       )}

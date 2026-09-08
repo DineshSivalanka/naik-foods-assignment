@@ -15,35 +15,34 @@ const DeliveryCheck = () => {
   };
 
   return (
-    <div className="delivery-check" style={{ marginTop: '20px', padding: '15px', border: '1px solid var(--border-color)', borderRadius: '8px', background: '#f8fafc' }}>
-      <h3 style={{ margin: '0 0 10px 0', fontSize: '16px', color: 'var(--text-dark)' }}>Check Delivery Availability</h3>
+    <div className="mt-5 p-4 border border-gray-200 rounded-lg bg-gray-50">
+      <h3 className="m-0 mb-2.5 text-base text-gray-900 font-bold">Check Delivery Availability</h3>
       
-      <form onSubmit={handleCheck} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+      <form onSubmit={handleCheck} className="flex gap-2.5 mb-2.5">
         <input 
           type="text" 
           placeholder="Enter PIN Code" 
           value={pincode}
           onChange={(e) => setPincode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-          style={{ flex: 1, padding: '10px', border: '1px solid var(--border-color)', borderRadius: '4px' }}
+          className="flex-1 p-2.5 border border-gray-300 rounded focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
         />
         <button 
           type="submit" 
-          className="primary-button" 
-          style={{ padding: '10px 20px', background: 'var(--primary-color)', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '600' }}
+          className="px-5 py-2.5 bg-primary hover:bg-[#c2410c] text-white border-none rounded font-semibold cursor-pointer transition-colors"
         >
           Check
         </button>
       </form>
 
       {status === "success" && (
-        <div style={{ color: 'green', fontSize: '14px' }}>
-          <div style={{ fontWeight: 'bold' }}>✓ Delivery available</div>
+        <div className="text-green-600 text-sm">
+          <div className="font-bold">✓ Delivery available</div>
           <div>Estimated delivery: 2–4 days</div>
         </div>
       )}
       
       {status === "error" && (
-        <div style={{ color: '#ff4757', fontSize: '14px' }}>
+        <div className="text-red-500 text-sm font-medium">
           Please enter a valid 6-digit PIN code.
         </div>
       )}

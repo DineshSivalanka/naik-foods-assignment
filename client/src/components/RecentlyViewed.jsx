@@ -27,9 +27,9 @@ const RecentlyViewed = () => {
   }
 
   return (
-    <div id="recently-viewed" className="recently-viewed-container">
-      <h2>Recently Viewed</h2>
-      <div className="product-grid">
+    <div id="recently-viewed" className="mt-8 pt-6 border-t border-gray-200">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Recently Viewed</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {recentlyViewed.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}

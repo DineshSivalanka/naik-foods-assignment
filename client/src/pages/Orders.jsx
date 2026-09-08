@@ -31,35 +31,32 @@ const Orders = () => {
     ];
 
     return (
-      <div style={{ background: "white", padding: "30px", borderRadius: "12px", border: "1px solid var(--border-color)", marginTop: "20px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px", borderBottom: "1px solid var(--border-color)", paddingBottom: "15px" }}>
-          <h2 style={{ fontSize: "20px", color: "var(--text-dark)", margin: 0 }}>Track Order #{order.id}</h2>
-          <button onClick={() => setTrackingOrder(null)} style={{ background: "transparent", border: "none", color: "var(--primary-color)", fontWeight: "bold", cursor: "pointer" }}>
+      <div className="bg-white p-8 rounded-xl border border-gray-200 mt-5 shadow-sm">
+        <div className="flex justify-between items-center mb-8 border-b border-gray-200 pb-4">
+          <h2 className="text-xl text-gray-900 m-0 font-bold">Track Order #{order.id}</h2>
+          <button onClick={() => setTrackingOrder(null)} className="bg-transparent border-none text-primary font-bold cursor-pointer hover:text-[#c2410c] transition-colors">
             &larr; Back to Orders
           </button>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0", position: "relative", paddingLeft: "20px" }}>
+        <div className="flex flex-col gap-0 relative pl-5">
           {/* Vertical Line connecting nodes */}
-          <div style={{ position: "absolute", left: "34px", top: "20px", bottom: "20px", width: "2px", background: "#e2e8f0", zIndex: 0 }}></div>
+          <div className="absolute left-[34px] top-5 bottom-5 w-[2px] bg-gray-200 z-0"></div>
 
           {steps.map((step, index) => {
             const isCompleted = index <= currentStep;
             const isCurrent = index === currentStep;
             
             return (
-              <div key={index} style={{ display: "flex", alignItems: "center", gap: "20px", padding: "15px 0", position: "relative", zIndex: 1 }}>
-                <div style={{ 
-                  width: "30px", height: "30px", borderRadius: "50%", 
-                  background: isCompleted ? "var(--primary-color)" : "white", 
-                  border: isCompleted ? "2px solid var(--primary-color)" : "2px solid #cbd5e1",
-                  color: isCompleted ? "white" : "#94a3b8",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "14px", fontWeight: "bold"
-                }}>
+              <div key={index} className="flex items-center gap-5 py-4 relative z-10">
+                <div className={`w-[30px] h-[30px] rounded-full flex items-center justify-center text-sm font-bold border-2 transition-colors ${
+                  isCompleted 
+                    ? "bg-primary border-primary text-white" 
+                    : "bg-white border-gray-300 text-gray-400"
+                }`}>
                   {isCompleted ? "✓" : (isCurrent ? "●" : "○")}
                 </div>
-                <div style={{ fontSize: "16px", fontWeight: isCurrent ? "bold" : "500", color: isCompleted ? "var(--text-dark)" : "#64748b" }}>
+                <div className={`text-base ${isCurrent ? "font-bold" : "font-medium"} ${isCompleted ? "text-gray-900" : "text-gray-500"}`}>
                   {step.label}
                 </div>
               </div>
@@ -71,55 +68,55 @@ const Orders = () => {
   };
 
   return (
-    <div className="orders-page" style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 20px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px" }}>
-        <h1 style={{ color: "var(--text-dark)", margin: 0 }}>My Orders</h1>
+    <div className="max-w-[800px] mx-auto px-5 py-10">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 m-0">My Orders</h1>
         {/* Toggle button strictly for demonstration purposes */}
-        <button onClick={() => setHasOrders(!hasOrders)} style={{ fontSize: "12px", background: "#f1f5f9", border: "1px solid #cbd5e1", padding: "5px 10px", borderRadius: "4px", cursor: "pointer" }}>
+        <button onClick={() => setHasOrders(!hasOrders)} className="text-xs bg-gray-100 hover:bg-gray-200 border border-gray-300 px-2.5 py-1.5 rounded transition-colors cursor-pointer font-medium text-gray-700">
           Toggle Empty State
         </button>
       </div>
 
       {!hasOrders ? (
-        <div style={{ background: "white", padding: "50px 20px", borderRadius: "12px", border: "1px solid var(--border-color)", textAlign: "center" }}>
-          <div style={{ fontSize: "40px", marginBottom: "15px" }}>🍪</div>
-          <h2 style={{ fontSize: "24px", color: "var(--text-dark)", marginBottom: "10px" }}>No orders yet</h2>
-          <p style={{ color: "var(--primary-color)", fontWeight: "bold", fontSize: "18px", marginBottom: "15px" }}>Your delicious journey starts here!</p>
-          <p style={{ color: "var(--text-light)", marginBottom: "30px" }}>Explore our snacks, pickles and traditional foods.</p>
-          <Link to="/store" className="primary-button" style={{ display: "inline-block", padding: "12px 24px", textDecoration: "none" }}>
+        <div className="bg-white py-12 px-5 rounded-xl border border-gray-200 text-center shadow-sm">
+          <div className="text-5xl mb-4">🍪</div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2.5">No orders yet</h2>
+          <p className="text-primary font-bold text-lg mb-4">Your delicious journey starts here!</p>
+          <p className="text-gray-500 mb-8">Explore our snacks, pickles and traditional foods.</p>
+          <Link to="/store" className="inline-block px-6 py-3 bg-primary hover:bg-[#c2410c] text-white font-semibold rounded-lg transition-colors text-decoration-none">
             Start Shopping
           </Link>
         </div>
       ) : trackingOrder ? (
         renderTracker(trackingOrder)
       ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div className="flex flex-col gap-5">
           {mockOrders.map(order => {
             const stepIndex = getStatusIndex(order.status);
             return (
-              <div key={order.id} style={{ background: "white", padding: "25px", borderRadius: "12px", border: "1px solid var(--border-color)", display: "flex", flexDirection: "column", gap: "20px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", borderBottom: "1px solid #f1f5f9", paddingBottom: "15px" }}>
+              <div key={order.id} className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col gap-5 shadow-sm">
+                <div className="flex justify-between items-start border-b border-gray-100 pb-4">
                   <div>
-                    <h3 style={{ fontSize: "18px", color: "var(--text-dark)", marginBottom: "5px" }}>Order #{order.id}</h3>
-                    <div style={{ fontSize: "14px", color: "var(--text-light)" }}>Placed: {order.date}</div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">Order #{order.id}</h3>
+                    <div className="text-sm text-gray-500 font-medium">Placed: {order.date}</div>
                   </div>
-                  <div style={{ fontSize: "18px", fontWeight: "bold", color: "var(--text-dark)" }}>
+                  <div className="text-lg font-bold text-gray-900">
                     ₹{order.total}
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "15px", color: "var(--text-dark)", fontWeight: "500", fontSize: "14px" }}>
-                  <span style={{ color: stepIndex >= 0 ? "#16a34a" : "#cbd5e1" }}>{stepIndex >= 0 ? "✓" : "○"} Confirmed</span>
-                  <span style={{ color: stepIndex >= 1 ? "#16a34a" : "#cbd5e1" }}>{stepIndex >= 1 ? "✓" : "○"} Packed</span>
-                  <span style={{ color: stepIndex >= 2 ? "var(--primary-color)" : "#cbd5e1" }}>{stepIndex >= 2 ? (stepIndex === 2 ? "●" : "✓") : "○"} Shipped</span>
-                  <span style={{ color: stepIndex >= 4 ? "#16a34a" : "#cbd5e1" }}>{stepIndex >= 4 ? "✓" : "○"} Delivered</span>
+                <div className="flex flex-wrap gap-4 text-gray-900 font-medium text-sm">
+                  <span className={`flex items-center gap-1.5 ${stepIndex >= 0 ? "text-green-600 font-bold" : "text-gray-400"}`}>{stepIndex >= 0 ? "✓" : "○"} Confirmed</span>
+                  <span className={`flex items-center gap-1.5 ${stepIndex >= 1 ? "text-green-600 font-bold" : "text-gray-400"}`}>{stepIndex >= 1 ? "✓" : "○"} Packed</span>
+                  <span className={`flex items-center gap-1.5 ${stepIndex >= 2 ? "text-primary font-bold" : "text-gray-400"}`}>{stepIndex >= 2 ? (stepIndex === 2 ? "●" : "✓") : "○"} Shipped</span>
+                  <span className={`flex items-center gap-1.5 ${stepIndex >= 4 ? "text-green-600 font-bold" : "text-gray-400"}`}>{stepIndex >= 4 ? "✓" : "○"} Delivered</span>
                 </div>
 
-                <div style={{ display: "flex", gap: "15px", marginTop: "5px" }}>
-                  <button onClick={() => setTrackingOrder(order)} className="primary-button" style={{ padding: "8px 20px", fontSize: "14px", background: "var(--primary-color)", color: "white", border: "none", borderRadius: "6px", cursor: "pointer", fontWeight: "bold" }}>
+                <div className="flex gap-4 mt-1">
+                  <button onClick={() => setTrackingOrder(order)} className="px-5 py-2 text-sm bg-primary hover:bg-[#c2410c] text-white border-none rounded-lg cursor-pointer font-bold transition-colors">
                     Track Order
                   </button>
-                  <button style={{ padding: "8px 20px", fontSize: "14px", background: "white", color: "var(--text-dark)", border: "1px solid #cbd5e1", borderRadius: "6px", cursor: "pointer", fontWeight: "600" }}>
+                  <button className="px-5 py-2 text-sm bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg cursor-pointer font-semibold transition-colors">
                     View Details
                   </button>
                 </div>

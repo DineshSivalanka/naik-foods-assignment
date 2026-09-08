@@ -2,53 +2,53 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="contact-page" style={{ maxWidth: "1000px", margin: "0 auto", padding: "40px 20px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "40px", color: "var(--text-dark)" }}>
+    <div className="max-w-[1000px] mx-auto px-5 py-10">
+      <h1 className="text-center mb-10 text-3xl font-bold text-gray-900">
         Contact Us
       </h1>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Contact Form */}
-        <div style={{ background: "#f8fafc", padding: "30px", borderRadius: "12px" }}>
+        <div className="bg-gray-50 p-8 rounded-xl">
           <form onSubmit={(e) => { e.preventDefault(); alert("Message sent!"); }}>
-            <div style={{ marginBottom: "20px" }}>
-              <label style={{ display: "block", marginBottom: "8px", fontWeight: "500", color: "var(--text-dark)" }}>Name</label>
-              <input type="text" required style={{ width: "100%", padding: "12px", borderRadius: "6px", border: "1px solid var(--border-color)" }} />
+            <div className="mb-5">
+              <label className="block mb-2 font-medium text-gray-900">Name</label>
+              <input type="text" required className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
             </div>
             
-            <div style={{ marginBottom: "20px" }}>
-              <label style={{ display: "block", marginBottom: "8px", fontWeight: "500", color: "var(--text-dark)" }}>Email</label>
-              <input type="email" required style={{ width: "100%", padding: "12px", borderRadius: "6px", border: "1px solid var(--border-color)" }} />
+            <div className="mb-5">
+              <label className="block mb-2 font-medium text-gray-900">Email</label>
+              <input type="email" required className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
             </div>
             
-            <div style={{ marginBottom: "20px" }}>
-              <label style={{ display: "block", marginBottom: "8px", fontWeight: "500", color: "var(--text-dark)" }}>Message</label>
-              <textarea required rows="5" style={{ width: "100%", padding: "12px", borderRadius: "6px", border: "1px solid var(--border-color)", resize: "vertical" }}></textarea>
+            <div className="mb-5">
+              <label className="block mb-2 font-medium text-gray-900">Message</label>
+              <textarea required rows="5" className="w-full p-3 rounded-lg border border-gray-200 resize-y focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"></textarea>
             </div>
             
-            <button type="submit" className="primary-button" style={{ width: "100%", padding: "12px", fontSize: "16px", background: "var(--primary-color)", color: "white", border: "none", borderRadius: "6px", cursor: "pointer", fontWeight: "bold" }}>
+            <button type="submit" className="w-full p-3 text-base bg-primary hover:bg-[#c2410c] text-white border-none rounded-lg cursor-pointer font-bold transition-colors">
               Send Message
             </button>
           </form>
         </div>
 
         {/* Contact Information & Map Placeholder */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <div style={{ background: "white", padding: "20px", border: "1px solid var(--border-color)", borderRadius: "12px" }}>
-            <h3 style={{ marginBottom: "15px", color: "var(--text-dark)" }}>Get In Touch</h3>
-            <p style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px", color: "var(--text-light)" }}>
-              <span style={{ fontSize: "20px" }}>📍</span> 123 Food Street, Culinary District
+        <div className="flex flex-col gap-5">
+          <div className="bg-white p-5 border border-gray-200 rounded-xl">
+            <h3 className="mb-4 text-xl font-bold text-gray-900">Get In Touch</h3>
+            <p className="flex items-center gap-2.5 mb-2.5 text-gray-500">
+              <span className="text-xl">📍</span> 123 Food Street, Culinary District
             </p>
-            <p style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px", color: "var(--text-light)" }}>
-              <span style={{ fontSize: "20px" }}>📞</span> +91 98765 43210
+            <p className="flex items-center gap-2.5 mb-2.5 text-gray-500">
+              <span className="text-xl">📞</span> +91 98765 43210
             </p>
-            <p style={{ display: "flex", alignItems: "center", gap: "10px", color: "var(--text-light)" }}>
-              <span style={{ fontSize: "20px" }}>✉️</span> hello@naikfoods.com
+            <p className="flex items-center gap-2.5 text-gray-500">
+              <span className="text-xl">✉️</span> hello@naikfoods.com
             </p>
           </div>
 
-          <div style={{ flex: 1, background: "#e2e8f0", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "250px", border: "1px dashed #cbd5e1" }}>
-            <p style={{ color: "#64748b", fontWeight: "500" }}>[ Map Placeholder ]</p>
+          <div className="flex-1 bg-gray-200 rounded-xl flex items-center justify-center min-h-[250px] border border-dashed border-gray-300">
+            <p className="text-gray-500 font-medium">[ Map Placeholder ]</p>
           </div>
         </div>
       </div>

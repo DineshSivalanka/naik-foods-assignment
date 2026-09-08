@@ -30,19 +30,19 @@ const Blog = () => {
   ];
 
   return (
-    <div className="blog-page" style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 20px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "40px", color: "var(--text-dark)" }}>
+    <div className="max-w-[1200px] mx-auto px-5 py-10">
+      <h1 className="text-center mb-10 text-3xl font-bold text-gray-900">
         Latest Articles
       </h1>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "30px" }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {blogs.map(blog => (
-          <div key={blog.id} style={{ border: "1px solid var(--border-color)", borderRadius: "12px", overflow: "hidden", background: "white", display: "flex", flexDirection: "column" }}>
-            <img src={blog.image} alt={blog.title} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
-            <div style={{ padding: "20px", display: "flex", flexDirection: "column", flex: 1 }}>
-              <h3 style={{ fontSize: "18px", marginBottom: "10px", color: "var(--text-dark)" }}>{blog.title}</h3>
-              <p style={{ color: "var(--text-light)", marginBottom: "20px", fontSize: "14px", flex: 1 }}>{blog.excerpt}</p>
-              <Link to="#" style={{ color: "var(--primary-color)", fontWeight: "bold", textDecoration: "none", alignSelf: "flex-start" }}>
+          <div key={blog.id} className="border border-gray-200 rounded-xl overflow-hidden bg-white flex flex-col shadow-sm hover:shadow-md transition-shadow">
+            <img src={blog.image} alt={blog.title} className="w-full h-[200px] object-cover" />
+            <div className="p-5 flex flex-col flex-1">
+              <h3 className="text-lg font-bold mb-2.5 text-gray-900">{blog.title}</h3>
+              <p className="text-gray-500 mb-5 text-sm flex-1 leading-relaxed">{blog.excerpt}</p>
+              <Link to="#" className="text-primary font-bold hover:text-[#c2410c] transition-colors self-start">
                 Read More &rarr;
               </Link>
             </div>

@@ -70,7 +70,7 @@ const AutocompleteSearch = ({ value, onChange, onSelect }) => {
   };
 
   return (
-    <div className="autocomplete-wrapper" ref={wrapperRef} style={{ position: "relative", width: "100%", flex: "1" }}>
+    <div ref={wrapperRef} className="relative w-full flex-1">
       <input
         type="text"
         name="search"
@@ -79,43 +79,20 @@ const AutocompleteSearch = ({ value, onChange, onSelect }) => {
         onChange={handleInputChange}
         onFocus={() => { if (suggestions.length > 0) setShowSuggestions(true); }}
         autoComplete="off"
-        style={{ width: "100%", boxSizing: "border-box" }}
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
       />
       
       {showSuggestions && (
-        <ul className="autocomplete-suggestions" style={{
-          position: "absolute",
-          top: "100%",
-          left: 0,
-          right: 0,
-          backgroundColor: "#fff",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-          zIndex: 1000,
-          listStyle: "none",
-          padding: 0,
-          margin: "4px 0 0 0",
-          boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-          maxHeight: "200px",
-          overflowY: "auto"
-        }}>
-          {loading && <li style={{ padding: "8px 12px", color: "#888" }}>Loading...</li>}
+        <ul className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg z-50 list-none p-0 mt-1 shadow-lg max-h-[200px] overflow-y-auto">
+          {loading && <li className="px-4 py-2.5 text-gray-500 text-sm">Loading...</li>}
           {!loading && suggestions.length === 0 && (
-            <li style={{ padding: "8px 12px", color: "#888" }}>No products found</li>
+            <li className="px-4 py-2.5 text-gray-500 text-sm">No products found</li>
           )}
           {!loading && suggestions.map((item) => (
             <li 
               key={item._id} 
               onClick={() => handleSuggestionClick(item)}
-              style={{
-                padding: "8px 12px",
-                cursor: "pointer",
-                borderBottom: "1px solid #eee",
-                color: "#333",
-                textAlign: "left"
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-              onMouseLeave={(e) => e.target.style.backgroundColor = "transparent"}
+              className="px-4 py-2.5 cursor-pointer border-b border-gray-100 last:border-b-0 text-gray-800 text-left hover:bg-gray-50 transition-colors"
             >
               {item.name}
             </li>

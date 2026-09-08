@@ -26,15 +26,15 @@ const Recommendations = ({ productId }) => {
   }
 
   return (
-    <section className="recommendations">
+    <section className="mt-10 pt-10 border-t border-gray-200">
 
-      <h2>You May Also Like</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">You May Also Like</h2>
 
-      <p className="recommendation-subtitle">
+      <p className="text-gray-500 mb-8 font-medium">
         Similar products you might enjoy
       </p>
 
-      <div className="recommendation-grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <ProductCard
             key={product._id}
