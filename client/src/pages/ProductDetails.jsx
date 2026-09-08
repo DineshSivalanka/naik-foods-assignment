@@ -18,6 +18,16 @@ const ProductDetails = () => {
       try {
         const data = await getProductById(id);
         setProduct(data);
+
+        // Update recently viewed in localStorage
+        const viewed = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
+        const updatedViewed = viewed.filter(p => p._id !== data._id);
+        updatedViewed.unshift(data);
+        if (updatedViewed.length > 5) {
+          updatedViewed.pop();
+        }
+        localStorage.setItem("recentlyViewed", JSON.stringify(updatedViewed));
+
       } catch (err) {
         console.error(err);
         setError("Unable to load product");

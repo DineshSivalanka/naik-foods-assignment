@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../services/api";
 import ProductCard from "../components/ProductCard";
 import FilterBar from "../components/FilterBar";
+import RecentlyViewed from "../components/RecentlyViewed";
 
 const Store = () => {
   const [products, setProducts] = useState([]);
@@ -33,8 +34,14 @@ const Store = () => {
     }
   };
 
+  const [hasRecentlyViewed, setHasRecentlyViewed] = useState(false);
+
   useEffect(() => {
     fetchProducts({});
+    const viewed = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
+    if (viewed.length > 0) {
+      setHasRecentlyViewed(true);
+    }
   }, []);
 
   return (
@@ -46,6 +53,16 @@ const Store = () => {
         <p>
           Discover authentic flavors and traditional favorites.
         </p>
+
+        {hasRecentlyViewed && (
+          <button 
+            className="secondary-button" 
+            style={{ marginTop: '1rem' }}
+            onClick={() => document.getElementById('recently-viewed')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            ↓ Jump to Recently Viewed
+          </button>
+        )}
       </div>
 
       <FilterBar
@@ -99,6 +116,8 @@ const Store = () => {
           ))}
         </div>
       )}
+
+      <RecentlyViewed />
 
     </div>
   );
