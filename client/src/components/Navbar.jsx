@@ -21,6 +21,7 @@ const Navbar = () => {
         <Link to="/about">About</Link>
         <Link to="/blog">Blog</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/account" style={{ fontWeight: "600", color: "var(--primary-color)" }}>👤 Account</Link>
       </div>
 
       <div className="nav-actions" style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>

@@ -77,6 +77,16 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const restoreItem = (restoredItem) => {
+    setCart((currentCart) => {
+      // Check if it somehow already exists
+      const exists = currentCart.find((item) => item._id === restoredItem._id);
+      if (exists) return currentCart;
+      
+      return [...currentCart, restoredItem];
+    });
+  };
+
   const cartCount = cart.reduce(
     (total, item) => total + item.quantity,
     0
@@ -100,6 +110,7 @@ export const CartProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         removeFromCart,
+        restoreItem,
         clearCart,
         cartCount,
         cartTotal,
