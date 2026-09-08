@@ -70,6 +70,7 @@ const Store = () => {
         filters={filters}
         setFilters={setFilters}
         onSearch={() => fetchProducts(filters)}
+        onReset={(resetFilters) => fetchProducts(resetFilters)}
       />
 
       {!loading && !error && (

@@ -1,6 +1,6 @@
 import AutocompleteSearch from "./AutocompleteSearch";
 
-const FilterBar = ({ filters, setFilters, onSearch }) => {
+const FilterBar = ({ filters, setFilters, onSearch, onReset }) => {
   const categories = [
     "Snacks",
     "Pickles",
@@ -20,25 +20,30 @@ const FilterBar = ({ filters, setFilters, onSearch }) => {
     }));
   };
 
-  const resetFilters = () => {
-    setFilters({
+  const handleReset = () => {
+    const resetValues = {
       search: "",
       category: "",
       minPrice: "",
       maxPrice: "",
       minRating: "",
-      minRating: "",
       sort: "",
       availability: "",
-    });
+    };
+
+    setFilters(resetValues);
+
+    if (onReset) {
+      onReset(resetValues);
+    }
   };
 
   return (
     <div className="filter-bar">
 
-      <AutocompleteSearch 
-        value={filters.search} 
-        onChange={handleChange} 
+      <AutocompleteSearch
+        value={filters.search}
+        onChange={handleChange}
         onSelect={onSearch}
       />
 
@@ -109,8 +114,9 @@ const FilterBar = ({ filters, setFilters, onSearch }) => {
       </button>
 
       <button
+        type="button"
         className="reset-button"
-        onClick={resetFilters}
+        onClick={handleReset}
       >
         Reset
       </button>

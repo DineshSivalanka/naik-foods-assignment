@@ -9,8 +9,8 @@ const Wishlist = () => {
   return (
     <div className="store-page">
       <div className="store-header">
-        <h1>Your Wishlist ❤️</h1>
-        <p>Items you love, saved for later.</p>
+        <h1>My Wishlist ❤️</h1>
+        <p>{wishlist.length} {wishlist.length === 1 ? 'saved product' : 'saved products'}</p>
       </div>
 
       {wishlist.length === 0 ? (

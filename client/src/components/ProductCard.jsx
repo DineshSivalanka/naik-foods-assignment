@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
@@ -17,6 +18,8 @@ const ProductCard = ({ product }) => {
     addToCart(product);
   };
 
+  const [showToast, setShowToast] = useState(false);
+
   const toggleLike = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -24,6 +27,8 @@ const ProductCard = ({ product }) => {
       removeFromWishlist(product._id);
     } else {
       addToWishlist(product._id);
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
     }
   };
 
@@ -45,6 +50,12 @@ const ProductCard = ({ product }) => {
         >
           {isLiked(product._id) ? "❤️" : "♡"}
         </button>
+
+        {showToast && (
+          <div style={{ position: "absolute", bottom: "10px", left: "50%", transform: "translateX(-50%)", background: "#333", color: "white", padding: "6px 12px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", whiteSpace: "nowrap", zIndex: 10 }}>
+            ♥ Added to wishlist
+          </div>
+        )}
       </div>
 
       <div className="product-info">

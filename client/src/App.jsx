@@ -10,21 +10,39 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Account from "./pages/Account";
+import Orders from "./pages/Orders";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 
+import { Link } from "react-router-dom";
+
 function Home() {
   return (
-    <div className="home">
-      <h1>Welcome to Naik Foods</h1>
-      <p>
-        Discover traditional flavors and delicious
-        products.
-      </p>
-
-      <a href="/store" className="shop-button">
-        Explore Products
-      </a>
+    <div className="home hero-container">
+      <div className="hero-text">
+        <h1>
+          Authentic Maharashtrian <br/><span className="highlight-text">Flavors, Delivered</span>
+        </h1>
+        <p>
+          Traditional snacks, pickles, and delicious treats crafted with love and heritage.
+        </p>
+        <div className="hero-buttons">
+          <Link to="/store" className="shop-button primary-btn">
+            Shop Now
+          </Link>
+          <Link to="/store?category=Snacks" className="explore-button secondary-btn">
+            Explore Categories
+          </Link>
+        </div>
+      </div>
+      
+      <div className="hero-image">
+        <div className="hero-glow"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1000&auto=format&fit=crop" 
+          alt="Authentic Maharashtrian Food" 
+        />
+      </div>
     </div>
   );
 }
@@ -70,6 +88,10 @@ function App() {
           <Route
             path="/account"
             element={<Account />}
+          />
+          <Route
+            path="/orders"
+            element={<Orders />}
           />
         </Routes>
       </BrowserRouter>

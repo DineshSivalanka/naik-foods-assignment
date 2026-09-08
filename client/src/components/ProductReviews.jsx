@@ -11,10 +11,10 @@ const ProductReviews = ({ product }) => {
   const mockReviews = [
     {
       id: 1,
-      author: "Priya S.",
+      author: "Verified Customer",
       rating: 5,
       date: "August 12, 2026",
-      text: "Very tasty and fresh! Reminds me of home.",
+      text: "Very tasty and fresh!",
       verified: true
     },
     {
@@ -41,20 +41,17 @@ const ProductReviews = ({ product }) => {
       
       <div className="reviews-summary" style={{ display: 'flex', gap: '40px', margin: '20px 0', alignItems: 'center' }}>
         <div className="rating-overall" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '48px', fontWeight: 'bold', color: 'var(--text-dark)' }}>{product.rating}</div>
-          <div style={{ color: 'var(--secondary-color)', fontSize: '20px' }}>
-            {"⭐".repeat(Math.round(product.rating))}
-          </div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: 'var(--text-dark)' }}>⭐ {product.rating} / 5</div>
           <div style={{ color: 'var(--text-light)', marginTop: '5px' }}>{product.reviews} Reviews</div>
         </div>
 
         <div className="rating-bars" style={{ flex: 1, maxWidth: '300px' }}>
           {[
-            { stars: 5, count: Math.floor(product.reviews * 0.75) },
-            { stars: 4, count: Math.floor(product.reviews * 0.15) },
-            { stars: 3, count: Math.floor(product.reviews * 0.05) },
-            { stars: 2, count: Math.floor(product.reviews * 0.03) },
-            { stars: 1, count: Math.floor(product.reviews * 0.02) }
+            { stars: 5, pct: 82 },
+            { stars: 4, pct: 12 },
+            { stars: 3, pct: 4 },
+            { stars: 2, pct: 1 },
+            { stars: 1, pct: 1 }
           ].map((bar) => (
             <div key={bar.stars} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '5px' }}>
               <span style={{ width: '45px', color: 'var(--secondary-color)' }}>
@@ -62,12 +59,12 @@ const ProductReviews = ({ product }) => {
               </span>
               <div style={{ flex: 1, height: '8px', background: 'var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
                 <div style={{ 
-                  width: `${(bar.count / product.reviews) * 100}%`, 
+                  width: `${bar.pct}%`, 
                   height: '100%', 
                   background: 'var(--secondary-color)' 
                 }}></div>
               </div>
-              <span style={{ width: '30px', textAlign: 'right', fontSize: '14px', color: 'var(--text-light)' }}>{bar.count}</span>
+              <span style={{ width: '40px', textAlign: 'right', fontSize: '14px', color: 'var(--text-light)' }}>{bar.pct}%</span>
             </div>
           ))}
         </div>
@@ -78,15 +75,19 @@ const ProductReviews = ({ product }) => {
           <div key={review.id} className="review-card" style={{ padding: '20px', border: '1px solid var(--border-color)', borderRadius: '8px', marginBottom: '15px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div>
-                <strong>{review.author}</strong>
-                {review.verified && <span style={{ color: 'green', fontSize: '12px', marginLeft: '10px' }}>✓ Verified Purchase</span>}
+                {/* Author moved to bottom for Verified Customer style */}
               </div>
               <div style={{ color: 'var(--text-light)', fontSize: '14px' }}>{review.date}</div>
             </div>
             <div style={{ color: 'var(--secondary-color)', marginBottom: '10px' }}>
               {"⭐".repeat(review.rating)}
             </div>
-            <p style={{ margin: 0, color: 'var(--text-dark)', lineHeight: '1.5' }}>"{review.text}"</p>
+            <p style={{ margin: 0, color: 'var(--text-dark)', lineHeight: '1.5', fontStyle: 'italic' }}>"{review.text}"</p>
+            {review.verified && (
+              <div style={{ marginTop: '10px', color: 'var(--text-light)', fontSize: '13px' }}>
+                — {review.author} <span style={{ color: '#16a34a', marginLeft: '4px' }}>✓</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -107,7 +108,7 @@ const ProductReviews = ({ product }) => {
         </button>
       ) : (
         <div style={{ marginTop: '20px', padding: '15px', background: '#f8fafc', borderRadius: '8px', textAlign: 'center', color: 'var(--text-light)', border: '1px solid var(--border-color)' }}>
-          You must purchase this product to leave a review.
+          Only verified purchasers should be allowed to leave a Verified Purchase review.
         </div>
       )}
     </div>

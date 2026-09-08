@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Account = () => {
   const [hasPhone, setHasPhone] = useState(false);
@@ -28,9 +29,24 @@ const Account = () => {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "30px", alignItems: "start" }}>
         
-        {/* Sidebar / Profile Completion */}
+        {/* Sidebar */}
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           
+          {/* Account Navigation */}
+          <div style={{ background: "white", padding: "10px", borderRadius: "12px", border: "1px solid var(--border-color)" }}>
+            <h3 style={{ padding: "10px 15px", margin: "0 0 5px 0", fontSize: "16px", color: "var(--text-light)" }}>My Account</h3>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "600", color: "var(--primary-color)", background: "#f8fafc", borderRadius: "8px", cursor: "pointer" }}>👤 Profile</div>
+              <div style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "500", color: "var(--text-dark)", cursor: "pointer" }}>📍 Addresses</div>
+              <Link to="/orders" style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "500", color: "var(--text-dark)", cursor: "pointer", textDecoration: "none" }}>📦 Orders</Link>
+              <Link to="/wishlist" style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "500", color: "var(--text-dark)", cursor: "pointer", textDecoration: "none" }}>❤️ Wishlist</Link>
+              <div style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "500", color: "var(--text-dark)", cursor: "pointer" }}>🎁 Offers</div>
+              <div style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "500", color: "var(--text-dark)", cursor: "pointer" }}>⚙️ Settings</div>
+              <div style={{ padding: "12px 15px", display: "flex", alignItems: "center", gap: "12px", fontWeight: "500", color: "#ef4444", cursor: "pointer", marginTop: "10px", borderTop: "1px solid var(--border-color)" }}>🚪 Logout</div>
+            </div>
+          </div>
+
+          {/* Profile Completion */}
           <div style={{ background: "white", padding: "20px", borderRadius: "12px", border: "1px solid var(--border-color)" }}>
             <h3 style={{ fontSize: "18px", marginBottom: "15px", color: "var(--text-dark)" }}>Complete your profile</h3>
             
