@@ -26,4 +26,19 @@ export const getRecommendations = async (id) => {
   return response.data;
 };
 
+export const getWishlist = async (clientId) => {
+  const response = await API.get(`/wishlist/${clientId}`);
+  return response.data;
+};
+
+export const addToWishlist = async (clientId, productId) => {
+  const response = await API.post(`/wishlist/${clientId}/add`, { productId });
+  return response.data;
+};
+
+export const removeFromWishlist = async (clientId, productId) => {
+  const response = await API.delete(`/wishlist/${clientId}/remove/${productId}`);
+  return response.data;
+};
+
 export default API;

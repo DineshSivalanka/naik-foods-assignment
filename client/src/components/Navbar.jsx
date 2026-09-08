@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 const Navbar = () => {
   const { cartCount } = useCart();
+  const { wishlistCount } = useWishlist();
 
   return (
     <nav className="navbar">
@@ -19,9 +21,14 @@ const Navbar = () => {
         <Link to="/about">About</Link>
       </div>
 
-      <Link to="/cart" className="cart">
-        🛒 Cart ({cartCount})
-      </Link>
+      <div className="nav-actions" style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+        <Link to="/wishlist" className="wishlist-link" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px' }}>
+          ❤️ Wishlist ({wishlistCount})
+        </Link>
+        <Link to="/cart" className="cart">
+          🛒 Cart ({cartCount})
+        </Link>
+      </div>
 
     </nav>
   );

@@ -20,8 +20,10 @@ app.get("/", (req, res) => {
 });
 
 const productRoutes = require("./routes/productRoutes");
+const wishlistRoutes = require("./routes/wishlistRoutes");
 
 app.use("/api/products", productRoutes);
+app.use("/api/wishlist", wishlistRoutes);
 
 const PORT = process.env.PORT || 5000;
 

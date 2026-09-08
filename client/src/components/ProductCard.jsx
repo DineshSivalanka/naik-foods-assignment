@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
+import { useWishlist } from "../context/WishlistContext";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
+  const { isLiked, addToWishlist, removeFromWishlist } = useWishlist();
   const navigate = useNavigate();
-  const [liked, setLiked] = useState(false);
 
   const discountPercent = product.originalPrice 
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
@@ -20,7 +20,11 @@ const ProductCard = ({ product }) => {
   const toggleLike = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setLiked(!liked);
+    if (isLiked(product._id)) {
+      removeFromWishlist(product._id);
+    } else {
+      addToWishlist(product._id);
+    }
   };
 
   return (
@@ -39,7 +43,7 @@ const ProductCard = ({ product }) => {
           onClick={toggleLike}
           aria-label="Like product"
         >
-          {liked ? "❤️" : "♡"}
+          {isLiked(product._id) ? "❤️" : "♡"}
         </button>
       </div>
 

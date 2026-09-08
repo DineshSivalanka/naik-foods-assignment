@@ -4,7 +4,9 @@ import Navbar from "./components/Navbar";
 import Store from "./pages/Store";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 import { CartProvider } from "./context/CartContext";
+import { WishlistProvider } from "./context/WishlistContext";
 
 function Home() {
   return (
@@ -25,8 +27,9 @@ function Home() {
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
-        <Navbar />
+      <WishlistProvider>
+        <BrowserRouter>
+          <Navbar />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -39,8 +42,13 @@ function App() {
             path="/cart"
             element={<Cart />}
           />
+          <Route
+            path="/wishlist"
+            element={<Wishlist />}
+          />
         </Routes>
       </BrowserRouter>
+      </WishlistProvider>
     </CartProvider>
   );
 }

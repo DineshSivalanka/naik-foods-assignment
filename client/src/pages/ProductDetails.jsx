@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProductById } from "../services/api";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 import Recommendations from "../components/Recommendations";
 
 const ProductDetails = () => {
@@ -12,6 +13,15 @@ const ProductDetails = () => {
   const [error, setError] = useState("");
   
   const { addToCart } = useCart();
+  const { isLiked, addToWishlist, removeFromWishlist } = useWishlist();
+
+  const toggleLike = () => {
+    if (isLiked(product._id)) {
+      removeFromWishlist(product._id);
+    } else {
+      addToWishlist(product._id);
+    }
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -120,13 +130,30 @@ const ProductDetails = () => {
               : "✕ Out of Stock"}
           </p>
 
-          <button
-            className="add-cart-button"
-            disabled={product.stock === 0}
-            onClick={() => addToCart(product)}
-          >
-            🛒 Add to Cart
-          </button>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button
+              className="add-cart-button"
+              disabled={product.stock === 0}
+              onClick={() => addToCart(product)}
+              style={{ flex: 1 }}
+            >
+              🛒 Add to Cart
+            </button>
+            <button
+              onClick={toggleLike}
+              style={{ 
+                background: 'white', 
+                border: '1px solid var(--border-color)', 
+                borderRadius: '8px', 
+                padding: '0 20px', 
+                fontSize: '24px', 
+                cursor: 'pointer',
+                color: '#ff4757'
+              }}
+            >
+              {isLiked(product._id) ? "❤️" : "♡"}
+            </button>
+          </div>
 
         </div>
 
