@@ -202,16 +202,16 @@ const Cart = () => {
                     <button onClick={() => increaseQuantity(item._id)} className="bg-white w-8 h-8 rounded shadow-sm border border-gray-100 flex items-center justify-center cursor-pointer text-lg hover:bg-gray-50 transition-colors">+</button>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     <button 
                       onClick={() => handleSaveForLater(item)} 
-                      className="text-gray-500 hover:text-primary bg-transparent border-none cursor-pointer flex items-center gap-1.5 font-medium text-sm transition-colors"
+                      className="text-primary hover:text-white bg-primary/10 hover:bg-primary border-none cursor-pointer flex items-center gap-1.5 font-semibold text-xs sm:text-sm px-3 py-1.5 rounded-full transition-colors"
                     >
                       ❤️ Save for later
                     </button>
                     <button 
                       onClick={() => handleRemove(item)} 
-                      className="text-gray-500 hover:text-red-500 bg-transparent border-none cursor-pointer flex items-center gap-1.5 font-medium text-sm transition-colors"
+                      className="text-red-500 hover:text-white bg-red-50 hover:bg-red-500 border-none cursor-pointer flex items-center gap-1.5 font-semibold text-xs sm:text-sm px-3 py-1.5 rounded-full transition-colors"
                     >
                       🗑️ Remove
                     </button>
