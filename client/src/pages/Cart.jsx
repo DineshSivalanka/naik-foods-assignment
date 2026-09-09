@@ -29,6 +29,7 @@ const Cart = () => {
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponMessage, setCouponMessage] = useState(null);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
   
   // Confetti State
   const [hasCelebrated, setHasCelebrated] = useState(false);
@@ -69,7 +70,11 @@ const Cart = () => {
   }, [cart[0]?._id]);
 
   const handleCheckout = () => {
-    navigate("/checkout");
+    setIsCheckingOut(true);
+    setTimeout(() => {
+      setIsCheckingOut(false);
+      navigate("/checkout");
+    }, 1000);
   };
 
   const handleRemove = (item) => {
@@ -316,8 +321,22 @@ const Cart = () => {
             </div>
           )}
 
-          <button onClick={handleCheckout} className="w-full bg-primary hover:bg-[#c2410c] text-white font-bold py-3.5 rounded-lg transition-colors mt-6 flex justify-center items-center gap-2.5">
-            Proceed to Secure Checkout &rarr;
+          <button 
+            onClick={handleCheckout} 
+            disabled={isCheckingOut}
+            className={`w-full text-white font-bold py-3.5 rounded-lg transition-all duration-300 mt-6 flex justify-center items-center gap-2.5 overflow-hidden relative ${isCheckingOut ? 'bg-[#c2410c] scale-[0.98]' : 'bg-primary hover:bg-[#c2410c]'}`}
+          >
+            {isCheckingOut ? (
+              <>
+                <span className="animate-bounce">🚚</span>
+                <span className="animate-pulse">Processing...</span>
+                <div className="absolute inset-0 w-full h-full bg-white/20 animate-pulse"></div>
+              </>
+            ) : (
+              <>
+                Proceed to Secure Checkout <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </>
+            )}
           </button>
           
           <div className="text-center mt-4">
