@@ -17,7 +17,7 @@ const products = [
     reviews: 128,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=800&auto=format&fit=crop&q=80",
     tags: ["snacks", "namkeen", "poha", "chivda"],
     stock: 50,
     featured: true,
@@ -33,7 +33,7 @@ const products = [
     reviews: 96,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=800&auto=format&fit=crop&q=80",
     tags: ["snacks", "spicy", "bhakarwadi"],
     stock: 40,
     featured: true,
