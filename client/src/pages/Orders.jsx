@@ -110,16 +110,18 @@ const Orders = () => {
             
             // Product info string
             let productInfo = "Products";
+            let productImg = null;
             if (order.products && order.products.length > 0) {
               const firstProduct = order.products[0].product;
               productInfo = firstProduct && firstProduct.name ? firstProduct.name : "Product";
+              productImg = firstProduct && firstProduct.image ? firstProduct.image : null;
               if (order.products.length > 1) {
                 productInfo += ` + ${order.products.length - 1} more items`;
               }
             }
 
             return (
-              <div key={order._id} className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col gap-5 shadow-sm">
+              <div key={order._id} className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col gap-5 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start border-b border-gray-100 pb-4">
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-1">Order #{orderId}</h3>
@@ -130,8 +132,13 @@ const Orders = () => {
                   </div>
                 </div>
 
-                <div className="text-gray-900 font-medium my-1">
-                  {productInfo}
+                <div className="flex items-center gap-4 my-1">
+                  {productImg && (
+                    <img src={productImg} alt="Product" className="w-[60px] h-[60px] object-cover rounded-lg border border-gray-200 shadow-sm" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1596647413669-e77894a4c6a6?q=80&w=600&auto=format&fit=crop"; }} />
+                  )}
+                  <div className="text-gray-900 font-medium text-[15px]">
+                    {productInfo}
+                  </div>
                 </div>
 
                 {/* Desktop Tracking View */}
