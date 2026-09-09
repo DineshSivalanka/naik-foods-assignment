@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { addToWishlist, getRecommendations } from "../services/api";
+import confetti from "canvas-confetti";
 
 const FREE_DELIVERY_LIMIT = 999;
 
@@ -28,6 +29,23 @@ const Cart = () => {
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponMessage, setCouponMessage] = useState(null);
+  
+  // Confetti State
+  const [hasCelebrated, setHasCelebrated] = useState(false);
+
+  useEffect(() => {
+    if (cartTotal >= FREE_DELIVERY_LIMIT && !hasCelebrated) {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.5 },
+        colors: ['#22c55e', '#ea580c', '#eab308']
+      });
+      setHasCelebrated(true);
+    } else if (cartTotal < FREE_DELIVERY_LIMIT) {
+      setHasCelebrated(false);
+    }
+  }, [cartTotal, hasCelebrated]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -162,10 +180,13 @@ const Cart = () => {
           {remaining > 0 ? (
             <p className="mb-2 text-blue-900 font-medium">🛍️ Add <strong className="font-bold">₹{remaining}</strong> more to unlock FREE DELIVERY</p>
           ) : (
-            <div className="flex items-center gap-2 mb-2 font-extrabold text-green-600">
-              <span className="animate-bounce text-xl inline-block">🎉</span> 
-              <span className="animate-pulse bg-green-100 px-3 py-1 rounded-full border border-green-200">Congratulations! You've unlocked FREE DELIVERY!</span>
-              <span className="animate-bounce text-xl inline-block" style={{ animationDelay: "150ms" }}>✨</span>
+            <div className="flex items-center gap-3 mb-3 justify-center sm:justify-start">
+              <span className="animate-bounce text-2xl inline-block drop-shadow-md">🎉</span> 
+              <div className="bg-gradient-to-r from-green-500 to-green-400 text-white px-5 py-2 rounded-full shadow-md font-extrabold tracking-wide uppercase text-sm flex items-center gap-2 transform transition-all hover:scale-105 cursor-default">
+                Unlocked Free Delivery
+                <span className="animate-pulse bg-white/20 px-2 py-0.5 rounded-md">✓</span>
+              </div>
+              <span className="animate-bounce text-2xl inline-block drop-shadow-md" style={{ animationDelay: "150ms" }}>✨</span>
             </div>
           )}
           <div className="w-full max-w-md h-2 bg-gray-200 rounded-full overflow-hidden">
