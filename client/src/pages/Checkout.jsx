@@ -167,12 +167,15 @@ const Checkout = () => {
       <div className="bg-gray-50 p-6 sm:p-8 rounded-xl h-fit sticky top-[100px] border border-gray-200 shadow-sm">
         
         {cartTotal < FREE_DELIVERY_LIMIT && (
-          <div className="mb-6 p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
-            <p className="mb-2 text-blue-900 font-medium text-sm">🚚 Add <strong className="font-bold">₹{FREE_DELIVERY_LIMIT - cartTotal}</strong> more to get FREE delivery</p>
-            <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-              <div className="h-full bg-green-500 transition-all" style={{ width: `${Math.min((cartTotal / FREE_DELIVERY_LIMIT) * 100, 100)}%` }} />
+          <div className="mb-6 p-5 bg-green-50/70 border border-green-200 rounded-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mt-4 -mr-4 w-16 h-16 bg-green-200 rounded-full opacity-20 blur-xl"></div>
+            <p className="mb-3 text-green-900 font-semibold text-[13px] relative z-10 flex items-center gap-1.5">
+              <span>🚚</span> Add <strong className="font-extrabold text-green-700">₹{FREE_DELIVERY_LIMIT - cartTotal}</strong> more to get FREE delivery
+            </p>
+            <div className="w-full h-2.5 bg-green-200/50 rounded-full overflow-hidden shadow-inner relative z-10">
+              <div className="h-full bg-green-500 transition-all shadow-sm" style={{ width: `${Math.min((cartTotal / FREE_DELIVERY_LIMIT) * 100, 100)}%` }} />
             </div>
-            <small className="text-gray-500 font-medium block mt-1.5 text-[11px]">₹{cartTotal} / ₹{FREE_DELIVERY_LIMIT}</small>
+            <small className="text-green-700/80 font-medium block mt-2 text-[11px] relative z-10">₹{cartTotal} / ₹{FREE_DELIVERY_LIMIT}</small>
           </div>
         )}
 

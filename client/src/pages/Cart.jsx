@@ -180,10 +180,14 @@ const Cart = () => {
         </button>
       </div>
 
-      <div className="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mb-8 flex flex-col sm:flex-row items-center justify-between shadow-sm">
-        <div className="flex-1 w-full">
+      <div className="bg-green-50/70 border border-green-200 rounded-xl p-5 mb-8 flex flex-col sm:flex-row items-center justify-between shadow-sm relative overflow-hidden">
+        {/* Subtle background decoration */}
+        <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-green-200 rounded-full opacity-20 blur-2xl"></div>
+        <div className="flex-1 w-full relative z-10">
           {remaining > 0 ? (
-            <p className="mb-2 text-blue-900 font-medium">🛍️ Add <strong className="font-bold">₹{remaining}</strong> more to unlock FREE DELIVERY</p>
+            <p className="mb-3 text-green-900 font-semibold text-lg flex items-center gap-2">
+              <span>🚚</span> Add <strong className="font-extrabold text-green-700">₹{remaining}</strong> more to unlock FREE DELIVERY
+            </p>
           ) : (
             <div className="flex items-center gap-3 mb-3 justify-center sm:justify-start">
               <span className="animate-bounce text-2xl inline-block drop-shadow-md">🎉</span> 
@@ -194,13 +198,13 @@ const Cart = () => {
               <span className="animate-bounce text-2xl inline-block drop-shadow-md" style={{ animationDelay: "150ms" }}>✨</span>
             </div>
           )}
-          <div className="w-full max-w-md h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div className="h-full bg-green-500 transition-all duration-500" style={{ width: `${progress}%` }} />
+          <div className="w-full max-w-md h-2.5 bg-green-200/50 rounded-full overflow-hidden shadow-inner">
+            <div className="h-full bg-green-500 transition-all duration-500 shadow-sm" style={{ width: `${progress}%` }} />
           </div>
-          <small className="text-gray-500 font-medium block mt-1">₹{cartTotal} / ₹{FREE_DELIVERY_LIMIT}</small>
+          <small className="text-green-700/80 font-medium block mt-1.5 text-xs">₹{cartTotal} / ₹{FREE_DELIVERY_LIMIT}</small>
         </div>
         {remaining > 0 && (
-          <Link to="/store" className="mt-4 sm:mt-0 whitespace-nowrap bg-white text-primary border border-primary hover:bg-primary/5 font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+          <Link to="/store" className="mt-4 sm:mt-0 relative z-10 whitespace-nowrap bg-white text-green-700 border-2 border-green-500 hover:bg-green-50 hover:text-green-800 font-bold py-2.5 px-5 rounded-lg transition-colors text-sm shadow-sm">
             Continue Shopping
           </Link>
         )}
