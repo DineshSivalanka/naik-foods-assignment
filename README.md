@@ -1,44 +1,87 @@
-# Naik Foods - Smart E-Commerce Experience
+# Naik Foods — Smart E-Commerce Enhancement
 
-A modern MERN stack e-commerce prototype designed to deliver a premium, high-performance shopping experience.
-
-This project focuses on improving product discovery, shopping experience, and responsive design through features like advanced search, category filtering, persistent cart management, custom pagination, and a complete UI uplift using Tailwind CSS.
+A MERN stack prototype demonstrating practical improvements to the [Naik Foods](https://www.naikfoods.co.in/in) e-commerce experience. Built as part of the **BITS AND VOLTS** Full Stack MERN Intern technical assignment.
 
 ## Live Demo
 
-Frontend: https://naik-foods-assignment.netlify.app/
-Backend: https://naik-foods-assignment.onrender.com
+| Service | URL |
+|---------|-----|
+| **Frontend** | https://naik-foods-assignment.netlify.app/ |
+| **Backend API** | https://naik-foods-assignment.onrender.com |
 
-## GitHub Repository
+## Overview
 
-https://github.com/DineshSivalanka/naik-foods-assignment
+After analyzing the Naik Foods website from both user and developer perspectives, I identified key opportunities in **product discovery**, **customer engagement**, and **post-purchase experience**. This prototype addresses those opportunities with a working MERN-stack implementation.
 
-## 🌟 Key Features
+## What I Developed
 
-### 🛍️ Core E-Commerce
-- **Product Listing:** Displaying 100 seeded products across various categories (Snacks, Pickles, Spices, Sweets).
-- **Custom Pagination:** Client-side pagination limiting the view to 20 items (4-5 rows) per page for optimal performance.
-- **Advanced Filtering:** Category, price range, and rating filters.
-- **Persistent Cart:** Context-based cart state persisted via `localStorage`.
-- **Free Delivery Tracker:** Progress bar tracking the ₹999 free-delivery threshold.
+### Product Discovery
+- **Keyword Search** with autocomplete suggestions
+- **Category Filtering** across 7 product categories
+- **Price Range Filter** for budget-conscious shopping
+- **Rating Filter** to find top-rated products
+- **Smart Sorting** — by price, rating, or name
 
-### 🎨 Premium UI/UX (Tailwind CSS)
-- **Responsive Mobile-First Design:** Fully optimized for mobile (375px), tablet, and desktop viewports.
-- **Glassmorphism:** Advanced blurry, semi-transparent header nav that looks great over scrolling content.
-- **Micro-Interactions:** Smooth hover physics on product cards, bouncing buttons, and custom glow effects.
-- **Modern Typography & Colors:** High-contrast Slate text and vibrant Orange accents.
+### Shopping Experience
+- **Product Details** with full product information
+- **Customer Reviews** with star ratings
+- **"You May Also Like"** — dynamic recommendations based on category & tags
+- **"Frequently Bought Together"** — complementary product suggestions
+- **Recently Viewed Products** — easy return to previously browsed items
+- **Delivery Pincode Checker** — check delivery availability before purchasing
+
+### Cart & Checkout
+- **Persistent Cart** — saved across sessions via localStorage
+- **Quantity Management** — increment, decrement, remove
+- **Free Delivery Progress Bar** — visual indicator for ₹999 threshold
+- **Complete Checkout Flow** — address form, order summary, payment selection
+
+### Customer Engagement
+- **Wishlist** — save products for later (MongoDB-backed)
+- **My Orders** — order history with visual status timeline
+- **Order Details** — itemized products, address, payment, price breakdown
+- **Account Page** — profile management, saved addresses, profile completion
+
+### UI/UX
+- **Responsive Design** — mobile, tablet, and desktop optimized
+- **Tailwind CSS** — modern, consistent styling
+- **Glassmorphism Navbar** — semi-transparent header
+- **Micro-interactions** — hover effects, smooth transitions
+- **Scroll to Top** — convenient navigation
 
 ## Tech Stack
 
-### Frontend
-- React.js (Vite)
-- React Router v7
-- Tailwind CSS v3
-- Axios
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 18 (Vite) |
+| Routing | React Router v7 |
+| Styling | Tailwind CSS v3 |
+| HTTP | Axios |
+| State | React Context API + localStorage |
+| Backend | Node.js + Express.js |
+| Database | MongoDB Atlas + Mongoose |
+| Frontend Hosting | Netlify |
+| Backend Hosting | Render |
 
-### Backend
-- Node.js & Express.js
-- MongoDB & Mongoose
+## Project Structure
+
+```
+naik-foods-assignment/
+├── client/
+│   └── src/
+│       ├── components/       # Reusable UI components
+│       ├── context/          # CartContext, WishlistContext
+│       ├── pages/            # Route pages (Store, Cart, Orders, etc.)
+│       └── services/         # Axios API client
+├── server/
+│   ├── config/               # MongoDB connection
+│   ├── controllers/          # Business logic
+│   ├── models/               # Mongoose schemas
+│   ├── routes/               # Express route definitions
+│   ├── seed.js               # Database seeder
+│   └── server.js             # Express entry point
+└── README.md
+```
 
 ## Installation & Setup
 
@@ -53,15 +96,17 @@ cd naik-foods-assignment
 cd server
 npm install
 ```
-Create a `server/.env` file:
+
+Create `server/.env`:
 ```env
 PORT=5000
-MONGO_URI=<YOUR_MONGODB_CONNECTION_STRING>
+MONGO_URI=<your-mongodb-connection-string>
 ```
-Start the backend server and run the seed script to populate 100 products:
+
+Seed the database and start the server:
 ```bash
 node seed.js
-npm start
+npm run dev
 ```
 
 ### 3. Frontend Setup
@@ -69,22 +114,44 @@ npm start
 cd ../client
 npm install
 ```
-Create a `client/.env` file:
+
+Create `client/.env`:
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
-Start the frontend development server:
+
+Start the development server:
 ```bash
 npm run dev
 ```
 
 ## API Endpoints
 
-- `GET /api/products` - Get all products with pagination & search.
-- `GET /api/products?category=Snacks` - Filter by category.
-- `GET /api/products/:id` - Get single product details.
-- `POST /api/orders` - Create a new order.
+### Products
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/products` | Get products (search, filter, sort, paginate) |
+| `GET` | `/api/products/:id` | Get product by ID |
+| `GET` | `/api/products/recommendations/:id` | Get recommendations |
+
+### Wishlist
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/wishlist/:clientId` | Get wishlist |
+| `POST` | `/api/wishlist/:clientId/add` | Add to wishlist |
+| `DELETE` | `/api/wishlist/:clientId/remove/:productId` | Remove from wishlist |
+
+### Orders
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/orders` | Create order |
+| `GET` | `/api/orders/:clientId` | Get user's orders |
+| `GET` | `/api/orders/detail/:id` | Get order details |
+
+## Analysis Report
+
+See [Naik_Foods_Analysis_Report.md](./Naik_Foods_Analysis_Report.md) for the complete website analysis, findings, and recommendations.
 
 ## Disclaimer
 
-This project was developed as a technical assignment/prototype to demonstrate MERN stack development, responsive design patterns, and e-commerce UI/UX improvements.
+This project was developed as a technical assignment to demonstrate MERN stack development, responsive design, and e-commerce UX improvements. It is not affiliated with Naik Foods.

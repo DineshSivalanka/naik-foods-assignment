@@ -17,7 +17,7 @@ const products = [
     reviews: 128,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80",
     tags: ["snacks", "namkeen", "poha", "chivda"],
     stock: 50,
     featured: true,
@@ -33,7 +33,7 @@ const products = [
     reviews: 96,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&auto=format&fit=crop&q=80",
     tags: ["snacks", "spicy", "bhakarwadi"],
     stock: 40,
     featured: true,
@@ -49,7 +49,7 @@ const products = [
     reviews: 85,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1599487405902-1279ecfb5737?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599487405902-1279ecfb5737?w=800&auto=format&fit=crop&q=80",
     tags: ["snacks", "sev", "namkeen", "masala"],
     stock: 60,
     featured: true,
@@ -65,7 +65,7 @@ const products = [
     reviews: 72,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1606491956689-2ea866880049?w=800&auto=format&fit=crop&q=80",
     tags: ["snacks", "chakali", "crispy"],
     stock: 45,
     featured: false,
@@ -81,7 +81,7 @@ const products = [
     reviews: 67,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=800&auto=format&fit=crop&q=80",
     tags: ["khakhra", "snacks", "roasted"],
     stock: 55,
     featured: true,
@@ -97,7 +97,7 @@ const products = [
     reviews: 92,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&auto=format&fit=crop&q=80",
     tags: ["namkeen", "mixture", "spicy"],
     stock: 70,
     featured: false,
@@ -113,7 +113,7 @@ const products = [
     reviews: 104,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1589301773822-6b9c9f4d7b1a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&auto=format&fit=crop&q=80",
     tags: ["shankarpali", "snacks", "sweet"],
     stock: 40,
     featured: true,
@@ -131,7 +131,7 @@ const products = [
     reviews: 156,
     weight: "300g",
     image:
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1633383718081-22ac93e3db65?w=800&auto=format&fit=crop&q=80",
     tags: ["pickle", "mango", "spicy"],
     stock: 60,
     featured: true,
@@ -147,7 +147,7 @@ const products = [
     reviews: 74,
     weight: "300g",
     image:
-      "https://images.unsplash.com/photo-1599909533730-f9d4f7c1b9a1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1625398407796-82650a8c135f?w=800&auto=format&fit=crop&q=80",
     tags: ["pickle", "vegetable", "spicy"],
     stock: 35,
     featured: true,
@@ -163,7 +163,7 @@ const products = [
     reviews: 88,
     weight: "300g",
     image:
-      "https://images.unsplash.com/photo-1599909533730-f9d4f7c1b9a1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&auto=format&fit=crop&q=80",
     tags: ["pickle", "lemon", "spicy"],
     stock: 50,
     featured: false,
@@ -179,7 +179,7 @@ const products = [
     reviews: 61,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=800&auto=format&fit=crop&q=80",
     tags: ["pickle", "green chilli", "spicy"],
     stock: 45,
     featured: false,
@@ -195,7 +195,7 @@ const products = [
     reviews: 79,
     weight: "300g",
     image:
-      "https://images.unsplash.com/photo-1599909533730-f9d4f7c1b9a1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1594282486756-e0e81e3e1d18?w=800&auto=format&fit=crop&q=80",
     tags: ["pickle", "garlic", "spicy"],
     stock: 40,
     featured: true,
@@ -211,7 +211,7 @@ const products = [
     reviews: 71,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&auto=format&fit=crop&q=80",
     tags: ["chutney", "garlic", "spicy"],
     stock: 55,
     featured: false,
@@ -230,7 +230,7 @@ const products = [
     reviews: 89,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1605809559367-9c94bc1cd8d4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1666190094762-a4d475bab8f9?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "ladoo", "dessert"],
     stock: 25,
     featured: true,
@@ -246,7 +246,7 @@ const products = [
     reviews: 134,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1605809559367-9c94bc1cd8d4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1695653422259-8a74ffe90401?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "ladoo", "motichoor"],
     stock: 30,
     featured: true,
@@ -262,7 +262,7 @@ const products = [
     reviews: 96,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1626132647820-2f96e480d1cd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "barfi", "milk"],
     stock: 35,
     featured: true,
@@ -278,7 +278,7 @@ const products = [
     reviews: 182,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1643192024940-dd3a91e0e823?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "kaju", "cashew"],
     stock: 20,
     featured: true,
@@ -294,7 +294,7 @@ const products = [
     reviews: 73,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "peda", "milk"],
     stock: 30,
     featured: false,
@@ -310,7 +310,7 @@ const products = [
     reviews: 81,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "modak", "coconut"],
     stock: 25,
     featured: true,
@@ -326,7 +326,7 @@ const products = [
     reviews: 143,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1666190094762-a4d475bab8f9?w=800&auto=format&fit=crop&q=80",
     tags: ["sweet", "gulab jamun", "dessert"],
     stock: 35,
     featured: true,
@@ -344,7 +344,7 @@ const products = [
     reviews: 110,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80",
     tags: ["spices", "masala", "garam masala"],
     stock: 80,
     featured: true,
@@ -360,7 +360,7 @@ const products = [
     reviews: 82,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=800&auto=format&fit=crop&q=80",
     tags: ["spices", "turmeric", "cooking"],
     stock: 100,
     featured: false,
@@ -376,7 +376,7 @@ const products = [
     reviews: 95,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800&auto=format&fit=crop&q=80",
     tags: ["spices", "chilli", "masala"],
     stock: 90,
     featured: true,
@@ -392,7 +392,7 @@ const products = [
     reviews: 76,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599909533730-f9d4f7c1b9a1?w=800&auto=format&fit=crop&q=80",
     tags: ["spices", "coriander", "cooking"],
     stock: 85,
     featured: false,
@@ -408,7 +408,7 @@ const products = [
     reviews: 64,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596450514735-e11b9eb6b6fa?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1532336414038-cf19a3c1ddb0?w=800&auto=format&fit=crop&q=80",
     tags: ["spices", "masala", "kitchen king"],
     stock: 70,
     featured: true,
@@ -424,7 +424,7 @@ const products = [
     reviews: 91,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596450514735-e11b9eb6b6fa?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=800&auto=format&fit=crop&q=80",
     tags: ["spices", "chaat", "masala"],
     stock: 65,
     featured: false,
@@ -442,7 +442,7 @@ const products = [
     reviews: 61,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1579624898144-86a01b7a942a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&auto=format&fit=crop&q=80",
     tags: ["mukhvas", "digestive", "mouth freshener"],
     stock: 45,
     featured: false,
@@ -458,7 +458,7 @@ const products = [
     reviews: 70,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1579624898144-86a01b7a942a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=800&auto=format&fit=crop&q=80",
     tags: ["mukhvas", "fennel", "sweet"],
     stock: 60,
     featured: true,
@@ -474,7 +474,7 @@ const products = [
     reviews: 54,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=800&auto=format&fit=crop&q=80",
     tags: ["mukhvas", "sesame", "digestive"],
     stock: 50,
     featured: false,
@@ -492,7 +492,7 @@ const products = [
     reviews: 43,
     weight: "500ml",
     image:
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&auto=format&fit=crop&q=80",
     tags: ["beverage", "buttermilk", "refreshing"],
     stock: 30,
     featured: false,
@@ -508,7 +508,7 @@ const products = [
     reviews: 102,
     weight: "500ml",
     image:
-      "https://images.unsplash.com/photo-1579624898144-86a01b7a942a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=800&auto=format&fit=crop&q=80",
     tags: ["lassi", "mango", "beverage"],
     stock: 25,
     featured: true,
@@ -524,7 +524,7 @@ const products = [
     reviews: 68,
     weight: "500ml",
     image:
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1571006682218-5765d0f1ea32?w=800&auto=format&fit=crop&q=80",
     tags: ["lassi", "dairy", "beverage"],
     stock: 30,
     featured: false,
@@ -540,7 +540,7 @@ const products = [
     reviews: 51,
     weight: "500ml",
     image:
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&auto=format&fit=crop&q=80",
     tags: ["chaas", "buttermilk", "dairy"],
     stock: 35,
     featured: false,
@@ -558,7 +558,7 @@ const products = [
     reviews: 38,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1630383249896-424e482df921?w=800&auto=format&fit=crop&q=80",
     tags: ["instant", "breakfast", "upma"],
     stock: 55,
     featured: false,
@@ -574,7 +574,7 @@ const products = [
     reviews: 46,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=800&auto=format&fit=crop&q=80",
     tags: ["instant", "poha", "breakfast"],
     stock: 60,
     featured: true,
@@ -590,7 +590,7 @@ const products = [
     reviews: 69,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1630383249896-424e482df921?w=800&auto=format&fit=crop&q=80",
     tags: ["papad", "grocery", "roasted"],
     stock: 80,
     featured: false,
@@ -606,7 +606,7 @@ const products = [
     reviews: 75,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?w=800&auto=format&fit=crop&q=80",
     tags: ["papad", "masala", "snacks"],
     stock: 65,
     featured: true,
@@ -622,7 +622,7 @@ const products = [
     reviews: 58,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&auto=format&fit=crop&q=80",
     tags: ["papad", "dal", "grocery"],
     stock: 70,
     featured: false,
@@ -640,7 +640,7 @@ const products = [
     reviews: 84,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1614735241165-6756e1df61ab?w=800&auto=format&fit=crop&q=80",
     tags: ["chivda", "peanut", "snacks"],
     stock: 50,
     featured: false,
@@ -656,7 +656,7 @@ const products = [
     reviews: 62,
     weight: "250g",
     image:
-      "https://images.unsplash.com/photo-1599487405902-1279ecfb5737?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1599487405902-1279ecfb5737?w=800&auto=format&fit=crop&q=80",
     tags: ["sev", "garlic", "snacks"],
     stock: 45,
     featured: false,
@@ -672,7 +672,7 @@ const products = [
     reviews: 97,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1605809559367-9c94bc1cd8d4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1695653422259-8a74ffe90401?w=800&auto=format&fit=crop&q=80",
     tags: ["ladoo", "cashew", "sweet"],
     stock: 20,
     featured: true,
@@ -688,7 +688,7 @@ const products = [
     reviews: 65,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1626132647820-2f96e480d1cd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=800&auto=format&fit=crop&q=80",
     tags: ["barfi", "coconut", "sweet"],
     stock: 30,
     featured: false,
@@ -704,7 +704,7 @@ const products = [
     reviews: 86,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596450514735-e11b9eb6b6fa?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1532336414038-cf19a3c1ddb0?w=800&auto=format&fit=crop&q=80",
     tags: ["masala", "spices", "cooking"],
     stock: 75,
     featured: true,
@@ -720,7 +720,7 @@ const products = [
     reviews: 57,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80",
     tags: ["jeera", "spices", "cumin"],
     stock: 80,
     featured: false,
@@ -736,7 +736,7 @@ const products = [
     reviews: 63,
     weight: "300g",
     image:
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1633383718081-22ac93e3db65?w=800&auto=format&fit=crop&q=80",
     tags: ["chutney", "mango", "condiment"],
     stock: 40,
     featured: false,
@@ -752,7 +752,7 @@ const products = [
     reviews: 48,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&auto=format&fit=crop&q=80",
     tags: ["chutney", "green", "spicy"],
     stock: 45,
     featured: false,
@@ -768,7 +768,7 @@ const products = [
     reviews: 59,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1579624898144-86a01b7a942a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=800&auto=format&fit=crop&q=80",
     tags: ["mukhvas", "fennel", "digestive"],
     stock: 50,
     featured: true,
@@ -784,7 +784,7 @@ const products = [
     reviews: 74,
     weight: "200g",
     image:
-      "https://images.unsplash.com/photo-1579624898144-86a01b7a942a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&auto=format&fit=crop&q=80",
     tags: ["mukhvas", "cardamom", "digestive"],
     stock: 40,
     featured: false,
@@ -800,7 +800,7 @@ const products = [
     reviews: 39,
     weight: "500ml",
     image:
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1571006682218-5765d0f1ea32?w=800&auto=format&fit=crop&q=80",
     tags: ["milk", "beverage", "masala"],
     stock: 25,
     featured: false,
@@ -816,7 +816,7 @@ const products = [
     reviews: 52,
     weight: "500ml",
     image:
-      "https://images.unsplash.com/photo-1579624898144-86a01b7a942a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=800&auto=format&fit=crop&q=80",
     tags: ["lassi", "rose", "beverage"],
     stock: 25,
     featured: true,
@@ -832,7 +832,7 @@ const products = [
     reviews: 61,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1630383249896-424e482df921?w=800&auto=format&fit=crop&q=80",
     tags: ["dosa", "instant", "breakfast"],
     stock: 50,
     featured: true,
@@ -848,7 +848,7 @@ const products = [
     reviews: 69,
     weight: "500g",
     image:
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?w=800&auto=format&fit=crop&q=80",
     tags: ["idli", "instant", "breakfast"],
     stock: 55,
     featured: false,
