@@ -62,7 +62,7 @@ const Checkout = () => {
 
       clearCart();
       alert("Order placed successfully! Thank you for shopping with Naik Foods.");
-      navigate("/store");
+      navigate("/orders");
     } catch (error) {
       console.error("Failed to place order:", error);
       alert("Failed to place order. Please try again.");

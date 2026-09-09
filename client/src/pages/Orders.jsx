@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getOrders } from "../services/api";
 
 const Orders = () => {
-  // Using a mock state to switch between empty and filled states for prototype demonstration
-  const [hasOrders, setHasOrders] = useState(true);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [trackingOrder, setTrackingOrder] = useState(null);
 
-  const mockOrders = [
-    {
-      id: "NF10245",
-      date: "Sep 8, 2026",
-      total: 1174,
-      status: "Shipped", // Status can be: Confirmed, Packed, Shipped, OutForDelivery, Delivered
-    }
-  ];
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const clientId = localStorage.getItem("naikFoodsClientId") || "anonymous";
+        const data = await getOrders(clientId);
+        setOrders(data);
+      } catch (error) {
+        console.error("Failed to fetch orders:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchOrders();
+  }, []);
 
   const getStatusIndex = (status) => {
     const statuses = ["Confirmed", "Packed", "Shipped", "OutForDelivery", "Delivered"];
@@ -71,13 +78,11 @@ const Orders = () => {
     <div className="max-w-[800px] mx-auto px-5 py-10">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900 m-0">My Orders</h1>
-        {/* Toggle button strictly for demonstration purposes */}
-        <button onClick={() => setHasOrders(!hasOrders)} className="text-xs bg-gray-100 hover:bg-gray-200 border border-gray-300 px-2.5 py-1.5 rounded transition-colors cursor-pointer font-medium text-gray-700">
-          Toggle Empty State
-        </button>
       </div>
 
-      {!hasOrders ? (
+      {loading ? (
+        <div className="text-center py-20 text-gray-500 font-medium">Loading your orders...</div>
+      ) : orders.length === 0 ? (
         <div className="bg-white py-12 px-5 rounded-xl border border-gray-200 text-center shadow-sm">
           <div className="text-5xl mb-4">🍪</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2.5">No orders yet</h2>
@@ -91,17 +96,19 @@ const Orders = () => {
         renderTracker(trackingOrder)
       ) : (
         <div className="flex flex-col gap-5">
-          {mockOrders.map(order => {
-            const stepIndex = getStatusIndex(order.status);
+          {orders.map(order => {
+            const stepIndex = getStatusIndex(order.status || "Confirmed");
+            const orderId = order._id.slice(-6).toUpperCase();
+            const date = new Date(order.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" });
             return (
-              <div key={order.id} className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col gap-5 shadow-sm">
+              <div key={order._id} className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col gap-5 shadow-sm">
                 <div className="flex justify-between items-start border-b border-gray-100 pb-4">
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">Order #{order.id}</h3>
-                    <div className="text-sm text-gray-500 font-medium">Placed: {order.date}</div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">Order #{orderId}</h3>
+                    <div className="text-sm text-gray-500 font-medium">Placed: {date}</div>
                   </div>
                   <div className="text-lg font-bold text-gray-900">
-                    ₹{order.total}
+                    ₹{order.summary.total}
                   </div>
                 </div>
 

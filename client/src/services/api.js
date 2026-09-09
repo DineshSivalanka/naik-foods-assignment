@@ -46,4 +46,9 @@ export const createOrder = async (orderData) => {
   return response.data;
 };
 
+export const getOrders = async (clientId) => {
+  const response = await API.get(`/orders/${clientId}`);
+  return response.data;
+};
+
 export default API;
