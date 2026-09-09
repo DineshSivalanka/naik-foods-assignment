@@ -150,69 +150,73 @@ const Cart = () => {
         </div>
       )}
 
-      <h1 className="text-[32px] font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200">Your Shopping Cart</h1>
+      <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+        <h1 className="text-[32px] font-bold text-gray-900">Your Shopping Cart</h1>
+        <button onClick={clearCart} className="text-red-500 hover:text-red-700 font-medium flex items-center gap-1.5 transition-colors text-sm">
+          🗑️ Clear Cart
+        </button>
+      </div>
 
-      <div className="bg-[#f0f9ff] border border-[#bae6fd] rounded-xl p-5 mb-8 flex flex-col items-center shadow-sm">
-        {remaining > 0 ? (
-          <div className="text-center mb-4">
-            <p className="mb-3 text-blue-900">🛍️ Add <strong className="font-bold text-blue-900">₹{remaining}</strong> more to unlock FREE DELIVERY</p>
-            <Link to="/store" className="inline-block bg-primary hover:bg-[#c2410c] text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
-              Continue Shopping
-            </Link>
+      <div className="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mb-8 flex flex-col sm:flex-row items-center justify-between shadow-sm">
+        <div className="flex-1 w-full">
+          {remaining > 0 ? (
+            <p className="mb-2 text-blue-900 font-medium">🛍️ Add <strong className="font-bold">₹{remaining}</strong> more to unlock FREE DELIVERY</p>
+          ) : (
+            <p className="mb-2 font-bold text-green-600">🎉 Congratulations! You've unlocked FREE DELIVERY</p>
+          )}
+          <div className="w-full max-w-md h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-full bg-green-500 transition-all duration-500" style={{ width: `${progress}%` }} />
           </div>
-        ) : (
-          <p className="text-center mb-4 font-bold text-green-600">🎉 Congratulations!<br />You've unlocked FREE DELIVERY</p>
-        )}
-        <div className="w-full max-w-md h-2.5 bg-gray-200 rounded-full overflow-hidden mt-1 mb-2">
-          <div className="h-full bg-green-500 transition-all duration-500" style={{ width: `${progress}%` }} />
+          <small className="text-gray-500 font-medium block mt-1">₹{cartTotal} / ₹{FREE_DELIVERY_LIMIT}</small>
         </div>
-        <small className="text-gray-500 font-medium">₹{cartTotal} / ₹{FREE_DELIVERY_LIMIT}</small>
+        {remaining > 0 && (
+          <Link to="/store" className="mt-4 sm:mt-0 whitespace-nowrap bg-white text-primary border border-primary hover:bg-primary/5 font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+            Continue Shopping
+          </Link>
+        )}
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-[2]">
-          <div className="flex justify-end mb-4">
-            <button onClick={clearCart} className="bg-transparent text-red-500 border border-red-500 hover:bg-red-50 px-4 py-2 rounded-lg font-bold flex items-center gap-1.5 transition-colors text-sm">
-              🗑️ Clear Cart
-            </button>
-          </div>
-
           {cart.map((item) => (
-            <div className="flex items-center gap-6 bg-white p-5 rounded-xl border border-gray-200 mb-4 relative pb-16 shadow-sm" key={item._id}>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-white p-5 rounded-xl border border-gray-100 mb-4 shadow-sm hover:shadow-md transition-shadow" key={item._id}>
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-24 h-24 object-cover rounded-lg"
+                className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-lg bg-gray-50"
                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1596647413669-e77894a4c6a6?q=80&w=600&auto=format&fit=crop"; }}
               />
 
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{item.name}</h3>
-                <p className="text-primary font-medium mb-3">₹{item.price}</p>
-
-                <div className="bg-gray-100 rounded-lg p-1 inline-flex border border-gray-300">
-                  <button onClick={() => decreaseQuantity(item._id)} className="bg-white w-8 h-8 rounded border border-gray-200 flex items-center justify-center cursor-pointer text-lg hover:bg-gray-50 transition-colors">−</button>
-                  <span className="min-w-[40px] text-center font-bold text-base flex items-center justify-center">{item.quantity}</span>
-                  <button onClick={() => increaseQuantity(item._id)} className="bg-white w-8 h-8 rounded border border-gray-200 flex items-center justify-center cursor-pointer text-lg hover:bg-gray-50 transition-colors">+</button>
+              <div className="flex-1 w-full">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
+                  <strong className="text-xl text-gray-900">₹{item.price * item.quantity}</strong>
                 </div>
-              </div>
+                
+                <p className="text-gray-500 font-medium mb-4">₹{item.price} each</p>
 
-              <strong className="text-xl text-gray-900 hidden sm:block pr-4">₹{item.price * item.quantity}</strong>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="bg-gray-50 rounded-lg p-1 inline-flex border border-gray-200">
+                    <button onClick={() => decreaseQuantity(item._id)} className="bg-white w-8 h-8 rounded shadow-sm border border-gray-100 flex items-center justify-center cursor-pointer text-lg hover:bg-gray-50 transition-colors">−</button>
+                    <span className="min-w-[40px] text-center font-bold text-base flex items-center justify-center">{item.quantity}</span>
+                    <button onClick={() => increaseQuantity(item._id)} className="bg-white w-8 h-8 rounded shadow-sm border border-gray-100 flex items-center justify-center cursor-pointer text-lg hover:bg-gray-50 transition-colors">+</button>
+                  </div>
 
-              {/* Action Buttons */}
-              <div className="absolute bottom-4 left-5 sm:left-[144px] flex gap-4">
-                <button 
-                  onClick={() => handleRemove(item)} 
-                  className="text-red-500 hover:text-red-600 bg-transparent border-none cursor-pointer flex items-center gap-1 font-medium text-sm transition-colors"
-                >
-                  🗑️ Remove
-                </button>
-                <button 
-                  onClick={() => handleSaveForLater(item)} 
-                  className="text-primary hover:text-[#c2410c] bg-transparent border-none cursor-pointer flex items-center gap-1 font-medium text-sm transition-colors"
-                >
-                  ❤️ Save for later
-                </button>
+                  <div className="flex items-center gap-4">
+                    <button 
+                      onClick={() => handleSaveForLater(item)} 
+                      className="text-gray-500 hover:text-primary bg-transparent border-none cursor-pointer flex items-center gap-1.5 font-medium text-sm transition-colors"
+                    >
+                      ❤️ Save for later
+                    </button>
+                    <button 
+                      onClick={() => handleRemove(item)} 
+                      className="text-gray-500 hover:text-red-500 bg-transparent border-none cursor-pointer flex items-center gap-1.5 font-medium text-sm transition-colors"
+                    >
+                      🗑️ Remove
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
