@@ -162,7 +162,11 @@ const Cart = () => {
           {remaining > 0 ? (
             <p className="mb-2 text-blue-900 font-medium">🛍️ Add <strong className="font-bold">₹{remaining}</strong> more to unlock FREE DELIVERY</p>
           ) : (
-            <p className="mb-2 font-bold text-green-600">🎉 Congratulations! You've unlocked FREE DELIVERY</p>
+            <div className="flex items-center gap-2 mb-2 font-extrabold text-green-600">
+              <span className="animate-bounce text-xl inline-block">🎉</span> 
+              <span className="animate-pulse bg-green-100 px-3 py-1 rounded-full border border-green-200">Congratulations! You've unlocked FREE DELIVERY!</span>
+              <span className="animate-bounce text-xl inline-block" style={{ animationDelay: "150ms" }}>✨</span>
+            </div>
           )}
           <div className="w-full max-w-md h-2 bg-gray-200 rounded-full overflow-hidden">
             <div className="h-full bg-green-500 transition-all duration-500" style={{ width: `${progress}%` }} />
