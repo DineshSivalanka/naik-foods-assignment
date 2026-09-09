@@ -54,7 +54,7 @@ const ProductReviews = ({ product }) => {
             { stars: 1, pct: 1 }
           ].map((bar) => (
             <div key={bar.stars} className="flex items-center gap-2.5 mb-1.5">
-              <span className="w-[50px] text-yellow-400 tracking-widest text-sm">
+              <span className="w-[85px] shrink-0 text-yellow-400 tracking-widest text-sm">
                 {"★".repeat(bar.stars)}{"☆".repeat(5 - bar.stars)}
               </span>
               <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
