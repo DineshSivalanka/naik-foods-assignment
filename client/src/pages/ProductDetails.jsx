@@ -76,7 +76,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="max-w-[1100px] mx-auto px-4 lg:px-8 py-4">
+    <div className="max-w-[1300px] mx-auto px-4 lg:px-8 py-4">
 
       <Link
         to="/store"
