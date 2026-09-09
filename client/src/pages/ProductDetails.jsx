@@ -76,58 +76,58 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 lg:px-8 py-6">
+    <div className="max-w-[1100px] mx-auto px-4 lg:px-8 py-4">
 
       <Link
         to="/store"
-        className="inline-block mb-4 lg:mb-6 text-gray-600 font-medium hover:text-primary transition-colors"
+        className="inline-block mb-4 text-gray-600 font-medium hover:text-primary transition-colors text-sm"
       >
         ← Back to Store
       </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-8 lg:gap-12 bg-white p-6 lg:p-10 rounded-2xl shadow-sm border border-gray-100 mb-10 w-full items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 mb-8 w-full items-stretch">
 
-        <div className="flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden aspect-square lg:aspect-auto lg:h-[480px]">
+        <div className="flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden h-full min-h-[350px]">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-contain p-4 hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-contain p-6 hover:scale-105 transition-transform duration-500"
             onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1596647413669-e77894a4c6a6?q=80&w=600&auto=format&fit=crop"; }}
           />
         </div>
 
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center py-2">
 
-          <span className="inline-block bg-primary/10 text-primary px-3 py-1.5 rounded-md text-sm font-bold uppercase tracking-wider w-fit mb-4">
+          <span className="inline-block bg-primary/10 text-primary px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider w-fit mb-3">
             {product.category}
           </span>
 
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">{product.name}</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3 leading-tight">{product.name}</h1>
 
-          <div className="flex items-center text-yellow-500 font-bold mb-6 text-lg">
+          <div className="flex items-center text-yellow-500 font-bold mb-4 text-base">
             ⭐ {product.rating}
-            <span className="text-gray-500 font-normal text-base ml-2">
+            <span className="text-gray-500 font-normal text-sm ml-2">
               ({product.reviews} reviews)
             </span>
           </div>
 
-          <div className="flex items-center gap-3 mb-6">
-            <strong className="text-4xl font-extrabold text-gray-900">₹{product.price}</strong>
+          <div className="flex items-center gap-3 mb-4">
+            <strong className="text-3xl font-extrabold text-gray-900">₹{product.price}</strong>
 
             {product.originalPrice && (
-              <del className="text-xl text-gray-400 font-medium">₹{product.originalPrice}</del>
+              <del className="text-lg text-gray-400 font-medium">₹{product.originalPrice}</del>
             )}
           </div>
 
-          <p className="text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-lg border border-gray-200 w-fit">
+          <p className="text-gray-600 font-medium mb-4 bg-gray-50 p-2.5 rounded-lg border border-gray-200 w-fit text-sm">
             Weight: {product.weight}
           </p>
 
-          <p className="text-gray-600 leading-relaxed mb-8 text-lg">
+          <p className="text-gray-600 leading-relaxed mb-5 text-base">
             {product.description}
           </p>
 
-          <p className={`font-bold mb-8 ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}>
+          <p className={`font-bold mb-5 text-sm ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}>
             {product.stock > 0
               ? `✓ In Stock (${product.stock} available)`
               : "✕ Out of Stock"}
@@ -136,7 +136,7 @@ const ProductDetails = () => {
           <DeliveryCheck />
 
           {/* Action Area */}
-          <div className="flex gap-4 mt-8">
+          <div className="flex gap-4 mt-6">
             {product.stock === 0 ? (
               <button
                 disabled
