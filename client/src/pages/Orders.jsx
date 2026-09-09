@@ -132,11 +132,11 @@ const Orders = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 my-1">
+                <div className="flex items-center gap-5 my-2 w-full">
                   {productImg && (
-                    <img src={productImg} alt="Product" className="w-[60px] h-[60px] object-cover rounded-lg border border-gray-200 shadow-sm" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1596647413669-e77894a4c6a6?q=80&w=600&auto=format&fit=crop"; }} />
+                    <img src={productImg} alt="Product" className="w-[90px] h-[90px] object-cover rounded-xl border border-gray-200 shadow-sm" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1596647413669-e77894a4c6a6?q=80&w=600&auto=format&fit=crop"; }} />
                   )}
-                  <div className="text-gray-900 font-medium text-[15px]">
+                  <div className="text-gray-900 font-semibold text-base sm:text-lg">
                     {productInfo}
                   </div>
                 </div>
