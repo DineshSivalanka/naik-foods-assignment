@@ -176,7 +176,7 @@ const Orders = () => {
                   <button onClick={() => setTrackingOrder(order)} className="px-6 py-2.5 text-sm bg-primary hover:bg-[#c2410c] text-white border-none rounded-lg cursor-pointer font-bold transition-all shadow-sm flex-1 sm:flex-none">
                     Track Order
                   </button>
-                  <button className="px-6 py-2.5 text-sm bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg cursor-pointer font-bold transition-all shadow-sm flex-1 sm:flex-none">
+                  <button onClick={() => navigate(`/orders/detail/${order._id}`)} className="px-6 py-2.5 text-sm bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg cursor-pointer font-bold transition-all shadow-sm flex-1 sm:flex-none">
                     View Details
                   </button>
                   <button className="px-6 py-2.5 text-sm bg-orange-50 hover:bg-orange-100 text-[#c2410c] border border-orange-200 rounded-lg cursor-pointer font-bold transition-all shadow-sm w-full sm:w-auto sm:ml-auto">

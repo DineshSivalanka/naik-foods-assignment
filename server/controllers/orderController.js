@@ -25,7 +25,9 @@ const createOrder = async (req, res) => {
 
 const getOrders = async (req, res) => {
   try {
-    const orders = await Order.find({ clientId: req.params.clientId }).sort({ createdAt: -1 });
+    const orders = await Order.find({ clientId: req.params.clientId })
+      .populate('products.product')
+      .sort({ createdAt: -1 });
     res.status(200).json(orders);
   } catch (error) {
     console.error("Error fetching orders:", error);
@@ -33,7 +35,21 @@ const getOrders = async (req, res) => {
   }
 };
 
+const getOrderById = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id).populate('products.product');
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+    res.status(200).json(order);
+  } catch (error) {
+    console.error("Error fetching order by ID:", error);
+    res.status(500).json({ message: "Server error fetching order" });
+  }
+};
+
 module.exports = {
   createOrder,
   getOrders,
+  getOrderById,
 };

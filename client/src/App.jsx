@@ -13,6 +13,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Account from "./pages/Account";
 import Orders from "./pages/Orders";
+import OrderDetails from "./pages/OrderDetails";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 
@@ -97,6 +98,10 @@ function App() {
                 <Route
                   path="/orders"
                   element={<Orders />}
+                />
+                <Route
+                  path="/orders/detail/:id"
+                  element={<OrderDetails />}
                 />
               </Routes>
             </div>
