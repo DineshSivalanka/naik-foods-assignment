@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Store from "./pages/Store";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
@@ -26,11 +28,11 @@ function Home() {
         <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
           Traditional snacks, pickles, and delicious treats crafted with love and heritage.
         </p>
-        <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto items-stretch md:items-center">
-          <Link to="/store" className="bg-primary hover:bg-[#c2410c] text-white px-8 py-4 rounded-lg font-semibold text-base shadow-[0_8px_20px_rgba(234,88,12,0.25)] hover:shadow-[0_12px_25px_rgba(234,88,12,0.35)] hover:-translate-y-0.5 transition-all duration-200 inline-block text-center">
+        <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto items-stretch md:items-center relative z-20">
+          <Link to="/store" className="bg-primary hover:bg-[#c2410c] text-white px-8 py-4 rounded-lg font-semibold text-base shadow-[0_8px_20px_rgba(234,88,12,0.25)] hover:shadow-[0_12px_25px_rgba(234,88,12,0.35)] hover:-translate-y-0.5 transition-all duration-200 inline-block text-center cursor-pointer">
             Shop Now
           </Link>
-          <Link to="/store?category=Snacks" className="bg-white hover:bg-gray-50 text-gray-800 border-2 border-gray-200 hover:border-primary hover:text-primary px-8 py-3.5 rounded-lg font-semibold text-base transition-all duration-200 inline-block text-center">
+          <Link to="/store?category=Snacks" className="bg-white hover:bg-gray-50 text-gray-800 border-2 border-gray-200 hover:border-primary hover:text-primary px-8 py-3.5 rounded-lg font-semibold text-base transition-all duration-200 inline-block text-center cursor-pointer">
             Explore Categories
           </Link>
         </div>
@@ -53,49 +55,55 @@ function App() {
     <CartProvider>
       <WishlistProvider>
         <BrowserRouter>
-          <Navbar />
+          <div className="min-h-screen flex flex-col justify-between">
+            <div className="flex-1">
+              <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          <Route
-            path="/product/:id"
-            element={<ProductDetails />}
-          />
-          <Route
-            path="/cart"
-            element={<Cart />}
-          />
-          <Route
-            path="/wishlist"
-            element={<Wishlist />}
-          />
-          <Route
-            path="/checkout"
-            element={<Checkout />}
-          />
-          <Route
-            path="/about"
-            element={<About />}
-          />
-          <Route
-            path="/blog"
-            element={<Blog />}
-          />
-          <Route
-            path="/contact"
-            element={<Contact />}
-          />
-          <Route
-            path="/account"
-            element={<Account />}
-          />
-          <Route
-            path="/orders"
-            element={<Orders />}
-          />
-        </Routes>
-      </BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/store" element={<Store />} />
+                <Route
+                  path="/product/:id"
+                  element={<ProductDetails />}
+                />
+                <Route
+                  path="/cart"
+                  element={<Cart />}
+                />
+                <Route
+                  path="/wishlist"
+                  element={<Wishlist />}
+                />
+                <Route
+                  path="/checkout"
+                  element={<Checkout />}
+                />
+                <Route
+                  path="/about"
+                  element={<About />}
+                />
+                <Route
+                  path="/blog"
+                  element={<Blog />}
+                />
+                <Route
+                  path="/contact"
+                  element={<Contact />}
+                />
+                <Route
+                  path="/account"
+                  element={<Account />}
+                />
+                <Route
+                  path="/orders"
+                  element={<Orders />}
+                />
+              </Routes>
+            </div>
+            <Footer />
+          </div>
+          <ScrollToTop />
+        </BrowserRouter>
       </WishlistProvider>
     </CartProvider>
   );

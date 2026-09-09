@@ -50,10 +50,17 @@ const Store = () => {
 
   useEffect(() => {
     fetchProducts({});
-    const viewed = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
-    if (viewed.length > 0) {
-      setHasRecentlyViewed(true);
-    }
+    const checkViewed = () => {
+      try {
+        const viewed = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
+        setHasRecentlyViewed(viewed.length > 0);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    checkViewed();
+    window.addEventListener("storage", checkViewed);
+    return () => window.removeEventListener("storage", checkViewed);
   }, []);
 
   return (
@@ -68,10 +75,16 @@ const Store = () => {
 
         {hasRecentlyViewed && (
           <button 
-            className="inline-block mt-4 bg-white text-gray-800 border-2 border-gray-200 py-2 px-5 rounded-lg font-semibold hover:border-primary hover:text-primary transition-colors text-sm" 
-            onClick={() => document.getElementById('recently-viewed')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center gap-2 mt-4 bg-primary hover:bg-[#c2410c] text-white py-2.5 px-6 rounded-full font-bold shadow-[0_4px_15px_rgba(234,88,12,0.35)] hover:shadow-[0_6px_22px_rgba(234,88,12,0.45)] hover:-translate-y-0.5 active:scale-95 transition-all duration-200 text-sm cursor-pointer border border-orange-400/30" 
+            onClick={() => {
+              const el = document.getElementById('recently-viewed');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
           >
-            ↓ Jump to Recently Viewed
+            <span className="text-base font-extrabold">↓</span>
+            <span>Jump to Recently Viewed</span>
           </button>
         )}
       </div>

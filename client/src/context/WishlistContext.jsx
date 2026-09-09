@@ -9,8 +9,16 @@ const generateClientId = () => {
 };
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
-  const [clientId, setClientId] = useState(() => {
+  const [wishlist, setWishlist] = useState(() => {
+    try {
+      const saved = localStorage.getItem("naikFoodsWishlist");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [clientId] = useState(() => {
     let id = localStorage.getItem("naikFoodsClientId");
     if (!id) {
       id = generateClientId();
@@ -19,6 +27,16 @@ export const WishlistProvider = ({ children }) => {
     return id;
   });
 
+  // Sync state to localStorage immediately
+  useEffect(() => {
+    try {
+      localStorage.setItem("naikFoodsWishlist", JSON.stringify(wishlist));
+    } catch (e) {
+      console.error("Failed to cache wishlist:", e);
+    }
+  }, [wishlist]);
+
+  // Initial sync with backend
   useEffect(() => {
     if (clientId) {
       fetchWishlist();
@@ -36,25 +54,42 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
-  const addToWishlist = async (productId) => {
+  const addToWishlist = async (productOrId) => {
+    const productId = typeof productOrId === "object" ? productOrId._id : productOrId;
+    const productObj = typeof productOrId === "object" ? productOrId : { _id: productId };
+
+    // 1. Instant Optimistic Update (0ms UI latency)
+    const previous = [...wishlist];
+    if (!wishlist.some((item) => item._id === productId)) {
+      setWishlist((prev) => [...prev, productObj]);
+    }
+
+    // 2. Background backend sync
     try {
       const data = await apiAddToWishlist(clientId, productId);
       if (data && data.products) {
         setWishlist(data.products);
       }
     } catch (error) {
-      console.error("Failed to add to wishlist:", error);
+      console.error("Failed to add to wishlist, reverting:", error);
+      setWishlist(previous);
     }
   };
 
   const removeFromWishlist = async (productId) => {
+    // 1. Instant Optimistic Update (0ms UI latency)
+    const previous = [...wishlist];
+    setWishlist((prev) => prev.filter((item) => item._id !== productId));
+
+    // 2. Background backend sync
     try {
       const data = await apiRemoveFromWishlist(clientId, productId);
       if (data && data.products) {
         setWishlist(data.products);
       }
     } catch (error) {
-      console.error("Failed to remove from wishlist:", error);
+      console.error("Failed to remove from wishlist, reverting:", error);
+      setWishlist(previous);
     }
   };
 

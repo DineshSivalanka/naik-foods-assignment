@@ -21,12 +21,12 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center gap-8">
-        <Link to="/" className="text-gray-800 hover:text-primary font-medium transition-colors">Home</Link>
-        <Link to="/store" className="text-gray-800 hover:text-primary font-medium transition-colors">Store</Link>
-        <Link to="/about" className="text-gray-800 hover:text-primary font-medium transition-colors">About</Link>
-        <Link to="/blog" className="text-gray-800 hover:text-primary font-medium transition-colors">Blogs</Link>
-        <Link to="/contact" className="text-gray-800 hover:text-primary font-medium transition-colors">Contact</Link>
+      <div className="hidden lg:flex items-center gap-8 relative z-50">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-800 hover:text-primary font-medium transition-colors cursor-pointer">Home</Link>
+        <Link to="/store" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-800 hover:text-primary font-medium transition-colors cursor-pointer">Store</Link>
+        <Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-800 hover:text-primary font-medium transition-colors cursor-pointer">About</Link>
+        <Link to="/blog" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-800 hover:text-primary font-medium transition-colors cursor-pointer">Blogs</Link>
+        <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-800 hover:text-primary font-medium transition-colors cursor-pointer">Contact</Link>
       </div>
 
       {/* Desktop Actions */}

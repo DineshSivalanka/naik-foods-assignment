@@ -14,14 +14,14 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   
-  const { addToCart } = useCart();
+  const { cart, addToCart, increaseQuantity, decreaseQuantity } = useCart();
   const { isLiked, addToWishlist, removeFromWishlist } = useWishlist();
 
   const toggleLike = () => {
     if (isLiked(product._id)) {
       removeFromWishlist(product._id);
     } else {
-      addToWishlist(product._id);
+      addToWishlist(product);
     }
   };
 
@@ -135,18 +135,68 @@ const ProductDetails = () => {
 
           <DeliveryCheck />
 
+          {/* Action Area */}
           <div className="flex gap-4 mt-8">
-            <button
-              className="flex-1 py-4 bg-primary hover:bg-[#c2410c] text-white font-bold rounded-xl text-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={product.stock === 0}
-              onClick={() => addToCart(product)}
-            >
-              🛒 Add to Cart
-            </button>
+            {product.stock === 0 ? (
+              <button
+                disabled
+                className="flex-1 py-4 bg-gray-100 text-gray-400 font-bold rounded-xl text-lg cursor-not-allowed border border-gray-200 text-center"
+              >
+                Out of Stock
+              </button>
+            ) : (() => {
+              const cartItem = cart.find((item) => item._id === product._id);
+              const quantityInCart = cartItem ? cartItem.quantity : 0;
+
+              return quantityInCart === 0 ? (
+                <button
+                  className="flex-1 py-4 bg-primary hover:bg-[#c2410c] text-white font-bold rounded-xl text-lg transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg active:scale-98"
+                  onClick={() => addToCart(product, 1)}
+                >
+                  🛒 Add to Cart
+                </button>
+              ) : (
+                <div className="flex-1 flex items-center justify-between bg-orange-50/90 border-2 border-primary rounded-xl px-5 py-3 shadow-xs">
+                  <button
+                    type="button"
+                    onClick={() => decreaseQuantity(product._id)}
+                    className="w-10 h-10 rounded-lg bg-primary hover:bg-[#c2410c] text-white font-bold text-xl flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-xs"
+                    title={quantityInCart === 1 ? "Remove from cart" : "Decrease quantity"}
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+                  <div className="flex flex-col items-center select-none">
+                    <span className="font-extrabold text-2xl text-primary leading-tight">
+                      {quantityInCart}
+                    </span>
+                    <span className="text-xs font-semibold text-orange-800/80 uppercase tracking-wider">
+                      in cart
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => increaseQuantity(product._id)}
+                    disabled={product.stock !== undefined && quantityInCart >= product.stock}
+                    className="w-10 h-10 rounded-lg bg-primary hover:bg-[#c2410c] text-white font-bold text-xl flex items-center justify-center transition-all active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shadow-xs"
+                    title="Increase quantity"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+              );
+            })()}
+
             <button
               onClick={toggleLike}
-              className="bg-white border border-gray-200 hover:border-red-200 hover:bg-red-50 rounded-xl px-6 text-3xl cursor-pointer text-[#ff4757] transition-colors flex items-center justify-center shadow-sm"
+              className={`border rounded-xl px-6 text-3xl cursor-pointer transition-all flex items-center justify-center shadow-sm hover:scale-105 active:scale-90 ${
+                isLiked(product._id)
+                  ? "bg-red-50 border-red-200 text-red-500 shadow-red-100"
+                  : "bg-white border-gray-200 hover:border-red-200 text-gray-400 hover:text-red-500"
+              }`}
               aria-label="Toggle wishlist"
+              title={isLiked(product._id) ? "Remove from wishlist" : "Add to wishlist"}
             >
               {isLiked(product._id) ? "❤️" : "♡"}
             </button>

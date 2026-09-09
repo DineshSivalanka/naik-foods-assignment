@@ -31,15 +31,18 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchRecommendations = async () => {
-      if (cart.length > 0) {
-        try {
-          const recs = await getRecommendations(cart[0]._id);
-          const filteredRecs = recs.filter(r => !cart.some(c => c._id === r._id));
-          setRecommendations(filteredRecs.slice(0, 4));
-        } catch (error) {
-          console.error("Failed to fetch recommendations:", error);
+      try {
+        // Only fetch recommendations for the first item in the cart to avoid too many requests
+        if (cart.length > 0) {
+          const firstProductId = cart[0].product._id || cart[0].product;
+          const data = await getRecommendations(firstProductId);
+          setRecommendations(data);
+        } else {
+          setRecommendations([]);
         }
-      } else {
+      } catch (err) {
+        console.error("Failed to fetch recommendations:", err);
+        // Soft fail if the product ID doesn't exist (e.g. after seeding new data)
         setRecommendations([]);
       }
     };

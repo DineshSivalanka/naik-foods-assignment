@@ -16,7 +16,8 @@ export const CartProvider = ({ children }) => {
     );
   }, [cart]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity = 1) => {
+    const qtyToAdd = Math.max(1, Number(quantity) || 1);
     setCart((currentCart) => {
       const existingProduct = currentCart.find(
         (item) => item._id === product._id
@@ -27,7 +28,7 @@ export const CartProvider = ({ children }) => {
           item._id === product._id
             ? {
                 ...item,
-                quantity: item.quantity + 1,
+                quantity: item.quantity + qtyToAdd,
               }
             : item
         );
@@ -37,7 +38,7 @@ export const CartProvider = ({ children }) => {
         ...currentCart,
         {
           ...product,
-          quantity: 1,
+          quantity: qtyToAdd,
         },
       ];
     });
